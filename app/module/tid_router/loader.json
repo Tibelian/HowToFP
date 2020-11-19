@@ -1,0 +1,9 @@
+{
+    "name": "Enrutador",
+    "author": "Tibelian",
+    "version": "1.0",
+    "main": "Router.php",
+    "require": [
+        {"composer": "bramus/router"}
+    ]
+}

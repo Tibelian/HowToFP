@@ -1,0 +1,8 @@
+{
+    "title": "HowToFP",
+    "url": "http://localhost/dev/HowToFP",
+    "favicon": "",
+    "theme": "default",
+    "cdn": "REMOTE_ADDR",
+    "admin_email": "howtofp@gmail.com"
+}

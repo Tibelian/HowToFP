@@ -1,0 +1,11 @@
+{
+    "name": "Slider Owl",
+    "author": "Tibelian",
+    "version": "1.0",
+    "main": "Owl",
+    "require": [
+        {"composer": "example/example"},
+        {"css-library": "example123"},
+        {"js-library": "example123"}
+    ]
+}
