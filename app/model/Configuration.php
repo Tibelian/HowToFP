@@ -21,15 +21,13 @@ class Configuration {
     private static string $adminEmail;
     
     public static function init() {
-        $config = json_decode(file_get_contents( __DIR__ . "/../database/website/config.json"), true);
+        $config = DataBase::load("website/config");
         self::setTitle($config['title']);
         self::setUrl($config['url']);
         self::setFavicon($config['favicon']);
         self::setTheme($config['theme']);
         self::setCdn($config['cdn']);  // HTTP_CF_CONNECTING_IP / REMOTE_ADDR
         self::setAdminEmail($config['admin_email']);
-        setcookie("url", self::getUrl(), 0, "/");
-        setcookie("theme_url", self::getUrl() . "/theme/" . self::getTheme(), 0, "/");
     }
     
     public static function getTitle(): string {

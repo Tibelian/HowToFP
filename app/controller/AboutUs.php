@@ -19,7 +19,8 @@ class AboutUs {
                 'about-us.twig', 
                 [
                     'website' => new WebSite(), 
-                    'session' => new Session()
+                    'session' => new Session(),
+                    'currentPage' => 'about-us'
                 ]
         );
         

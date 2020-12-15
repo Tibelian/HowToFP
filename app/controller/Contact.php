@@ -23,7 +23,8 @@ class Contact {
                 'contact.twig', 
                 [
                     'website' => new WebSite(), 
-                    'session' => new Session()
+                    'session' => new Session(),
+                    'currentPage' => 'contact'
                 ]
             )
         );

@@ -35,7 +35,7 @@ class Theme {
         $loader = new TemplateLoader(WebSite::getThemePath());
         self::$engine = new Template($loader);
 
-        // $loader = new \Twig\Loader\FilesystemLoader(WebSite::getThemePath(), ['cache' => '/path/to/compilation_cache']);
+        setcookie("theme_url", WebSite::getThemeUrl());
         
     }
 

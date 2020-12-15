@@ -1,1 +1,271 @@
-home
+<!doctype html>
+<html lang="es">
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- css -->
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/all.min.css">
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/animate.min.css">
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+    <!-- favicon -->
+    <link rel="icon" href="{{ website.themeUrl }}/assets/img/schoolarmy.jpeg" />
+
+    <!-- web title -->
+    <title>HowToFp aka SchoolArmy</title>
+
+</head>
+<body class="bg-light">
+
+    <!-- header -->
+    <div class="container-fluid">
+        {% include 'partials/header.twig' %}
+    </div>
+
+    <!-- main content -->
+    <div class="container-fluid">
+        <div class="row bg-white py-5 bg-image shadow-sm" style="background-image: url('assets/img/bg-light.png')">
+            <div class="container animate__animated animate__fadeInLeft">
+                <div class="d-block text-center mb-4">
+                    <h1 class="text-uppercase">Últimas novedades</h1>
+                    <h4 class="badge badge-danger">NO TE PIERDAS NI UN SOLO VÍDEO NUESTRO</h4>
+                </div>
+                <div class="row justify-content-center pb-5 owl-carousel mx-auto">
+                    <div class="d-flex justify-content-center py-4">
+                        <div class="card bg-light shadow-sm" style="width: 18rem; height:350px;">
+                            <div class="d-flex justify-content-center">
+                                <img class="card-img-top mt-3" src="assets/img/schoolarmy.jpeg" alt="texto alternativo" style="width: 50%;" />
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Vídeos</h5>
+                                <p class="card-text">El entretenimiento más original de todo YouTube</p>
+                            </div>
+                            <div class="card-body d-flex justify-content-center align-items-center">
+                                <a href="https://www.youtube.com/c/SchoolArmy" class="btn btn-danger" target="_blank">Ver canal</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center py-4">
+                        <div class="card bg-light shadow-sm" style="width: 18rem; height:350px;">
+                            <div class="d-flex justify-content-center">
+                                <img class="card-img-top mt-3" src="assets/img/schoolarmy.jpeg" alt="texto alternativo" style="width: 50%;" />
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Streaming</h5>
+                                <p class="card-text">Participa en tiempo real con nosotros</p>
+                            </div>
+                            <div class="card-body d-flex justify-content-center align-items-center">
+                                <a href="https://www.twitch.tv/schoolarmy8" class="btn btn-danger" target="_blank">Ver stream</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center py-4">
+                        <div class="card bg-light shadow-sm" style="width: 18rem; height:350px;">
+                            <div class="d-flex justify-content-center">
+                                <img class="card-img-top mt-3" src="assets/img/schoolarmy.jpeg" alt="texto alternativo" style="width: 50%;" />
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Nuestro Blog</h5>
+                                <p class="card-text">Todas las noticias a un click</p>
+                            </div>
+                            <div class="card-body d-flex justify-content-center align-items-center">
+                                <a href="http://howtofp.com/" class="btn btn-danger" target="_blank">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bg-white py-5 shadow-sm">
+            <div class="container animate__animated animate__fadeInRight">
+                <div class="row justify-content-between list-circle">
+                    <div class="col text-center">
+                        <div class="rounded-circle">
+                            <span class="h1 text-danger font-weight-bold"><i class="fas fa-shapes"></i></span>
+                            <p class="h5 mb-0">Variedad</p>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="rounded-circle">
+                            <span class="h1 text-danger font-weight-bold"><i class="fas fa-smile"></i></span>
+                            <p class="h5 mb-0">Diversión</p>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="rounded-circle">
+                            <span class="h1 text-danger font-weight-bold"><i class="fas fa-puzzle-piece"></i></span>
+                            <p class="h5 mb-0">Creatividad</p>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="rounded-circle">
+                            <span class="h1 text-danger font-weight-bold"><i class="fas fa-handshake"></i></span>
+                            <p class="h5 mb-0">Confianza</p>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="rounded-circle">
+                            <span class="h1 text-danger font-weight-bold"><i class="fas fa-users"></i></span>
+                            <p class="h5 mb-0">Colaboración</p>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="rounded-circle">
+                            <span class="h1 text-danger font-weight-bold"><i class="fas fa-question"></i></span>
+                            <p class="h5 mb-0">Ayuda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row py-5">
+            <div class="container animate__animated animate__fadeInLeft">
+                <h2 class="text-center mb-3">Somos una gran comunidad.</h2>
+                <p>Puedes ser uno de nosotros y participar en todos los eventos ....etc Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, voluptatem.</p>
+                <div class="row justify-content-between align-items-center">
+                    <ul class="col list-group list-group-flush">
+                        <li class="list-group-item bg-transparent border-0 h6 mb-1"><strong><i class="fas fa-check-circle text-danger"></i> Vlogging</strong><br>
+                            Nuevas series de vídeos y reacciones en nuestro canal de YouTube o incluso en Twitch con el tag "Charlando".
+                        </li>
+                        <li class="list-group-item bg-transparent border-0 h6 mb-1"><strong><i class="fas fa-check-circle text-danger"></i> Gaming</strong><br>
+                            No hay mejor entretenimiento que jugar y particiar en el progreso de la partida.
+                        </li>
+                        <li class="list-group-item bg-transparent border-0 h6 mb-1"><strong><i class="fas fa-check-circle text-danger"></i> Blogging</strong><br>
+                            En nuestro blog publicamos las últimas novedades sobre nuestra gran comunidad.
+                        </li>
+                        <li class="list-group-item bg-transparent border-0 h6 mb-1"><strong><i class="fas fa-check-circle text-danger"></i> Aprendizaje</strong><br>
+                            Apoyamos el aprendizaje innovador con las nuevas tecnologías. 
+                        </li>
+                    </ul>
+                    <div id="carouselGallery" class="carousel slide carousel-fade col" data-ride="carousel" style="height: 400px;">
+                        <ol class="carousel-indicators">
+                          <li data-target="#carouselGallery" data-slide-to="0" class="active"></li>
+                          <li data-target="#carouselGallery" data-slide-to="1"></li>
+                          <li data-target="#carouselGallery" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <div class="img-slider" style="background-image: url('assets/img/gallery/3s9d932.jpg');"></div>
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>First slide label</h5>
+                              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, nam.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <div class="img-slider" style="background-image: url('assets/img/gallery/3289s3sf.jpg');"></div>
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Second slide label</h5>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <div class="img-slider" style="background-image: url('assets/img/gallery/78fd8us.jpg');"></div>
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Third slide label</h5>
+                              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselGallery" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselGallery" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row py-5 bg-white shadow">
+            <div class="container animate__animated animate__fadeInRight">
+                <h2 class="text-center">¿Quieres hacer parte de nuestro equipo?</h2>
+                <p class="mb-5 text-center">Completa los siguientes sencillos pasos para unirte a nuestra gran familia</p>
+                
+                <div class="row justify-content-between">
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="card shadow-sm">
+                            <div class="p-2 bg-dark text-white h2 mb-0 text-center">1</div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-caret-right text-danger"></i> Lorem ipsum dolor sit amet.</li>
+                                    <li class="list-group-item"><i class="fas fa-caret-right text-danger"></i> Lorem ipsum dolor sit amet.</li>
+                                    <li class="list-group-item"><i class="fas fa-caret-right text-danger"></i> Lorem ipsum dolor sit amet.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="card shadow-sm">
+                            <div class="p-2 bg-dark text-white h2 mb-0 text-center">2</div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-caret-right text-danger"></i> Lorem ipsum dolor sit amet.</li>
+                                    <li class="list-group-item"><i class="fas fa-caret-right text-danger"></i> Lorem ipsum dolor sit amet.</li>
+                                    <li class="list-group-item"><i class="fas fa-caret-right text-danger"></i> Lorem ipsum dolor sit amet.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="card shadow-sm">
+                            <div class="p-2 bg-dark text-white h2 mb-0 text-center">3</div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-caret-right text-danger"></i> Lorem ipsum dolor sit amet.</li>
+                                    <li class="list-group-item"><i class="fas fa-caret-right text-danger"></i> Lorem ipsum dolor sit amet.</li>
+                                    <li class="list-group-item"><i class="fas fa-caret-right text-danger"></i> Lorem ipsum dolor sit amet.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="container-fluid mt-auto">
+        {% include 'partials/footer.twig' %}
+    </div>
+
+    <!-- javascript -->
+    <script src="{{ website.themeUrl }}/assets/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="{{ website.themeUrl }}/assets/js/popper.min.js"></script>
+    <script src="{{ website.themeUrl }}/assets/js/bootstrap.min.js"></script>
+    <script src="{{ website.themeUrl }}/assets/js/owl.carousel.min.js"></script>
+    <script src="{{ website.themeUrl }}/assets/js/main.js"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:0,
+            responsiveClass:true,
+            nav:false,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:2,
+                    nav:false
+                },
+                1200:{
+                    items:3,
+                    nav:false,
+                    loop:false
+                }
+            }
+        })
+</script>
+
+</body>
+</html>

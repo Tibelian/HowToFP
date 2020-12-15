@@ -24,6 +24,9 @@ class WebSite extends Configuration {
         
         // user ip
         self::setUserIp(self::loadRealIp());
+
+        // new cookie with the web url
+        setcookie("url", self::getUrl(), 0, "/");
         
     }
     

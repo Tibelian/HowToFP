@@ -13,12 +13,12 @@ $router->get('/', 'App\Controller\Home@show');
 /************
  * ABOUT-US *
  ************/
-$router->get('/', 'App\Controller\AboutUs@show');
+$router->get('/about-us', 'App\Controller\AboutUs@show');
 
 /***********
  * CONTACT *
  ***********/
-$router->get('/', 'App\Controller\Contact@show');
+$router->get('/contact', 'App\Controller\Contact@show');
 
 /********
  * NEWS *
