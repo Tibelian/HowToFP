@@ -1,4 +1,47 @@
 
+<div class="join-us shadow animate__animated animate__flipInX">
+    <a class="text-danger text-uppercase" href="#" data-toggle="modal" data-target="#unirseModal"><i class="fas fa-file-signature"></i> Únete</a>
+</div>
+
+<div class="modal fade" id="unirseModal" tabindex="-1" role="dialog" aria-labelledby="unirseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post" action="#">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="unirseModalLabel">Solicitud para unirse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <p>Solamente debe introducir el correo electrónico, el instagram y en pocas palabras una pequeña presentación. Una vez completada y enviada la solicitud nosotros nos pondremos en contacto con usted lo más rápido que podamos.</p>
+
+                    <div class="form-group">
+                        <label for="unirseEmail"><i class="fas fa-envelope"></i> Email:</label>
+                        <input type="email" class="form-control" id="unirseEmail" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="unirseInstagram"><i class="fab fa-instagram"></i> Instagram <small>(opcional)</small>:</label>
+                        <input type="email" class="form-control" id="unirseInstagram" name="instagram">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="unirsePresentacion"><i class="fas fa-file-alt"></i> Presentación:</label>
+                        <textarea class="form-control" id="unirsePresentacion" name="presentacion" maxlength="200" rows="4"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger mx-auto">Enviar solicitud</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <header class="row bg-dark">
     <div class="container main-menu animate__animated animate__fadeInDown">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
