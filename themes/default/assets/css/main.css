@@ -1,6 +1,3 @@
-
-
-
 body {
     min-height: 100vh;
     display: flex;
@@ -8,40 +5,39 @@ body {
     font-family: 'Titillium Web', sans-serif;
 }
 
-
-
-
-
 .bg-image {
     background-position: center;
     background-repeat: repeat;
 }
 
-
-
 /**
 barra de navegación
 **/
+
 .main-menu .nav-link {
     padding: 20px;
     text-transform: uppercase;
     border-bottom: 4px solid transparent;
     transition: all .5s;
 }
+
 .main-menu .nav-link:hover, .main-menu .nav-link.active {
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, .3);
     border-bottom: 4px solid var(--danger);
 }
+
 .main-menu .nav-link:hover i, .main-menu .nav-link.active i {
     color: var(--danger);
     border-color: var(--danger);
 }
+
 .main-menu .nav-link i {
     border: 1px solid transparent;
     border-radius: 10px;
     padding: 5px;
     transition: all .5s;
 }
+
 @media only screen and (min-width: 600px) {
     .social-media {
         margin-left: 15px;
@@ -62,16 +58,17 @@ barra de navegación
     }
 }
 
-
 /**
 detalles
 **/
+
 .list-circle .col {
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: default;
 }
+
 .list-circle .rounded-circle {
     display: flex;
     justify-content: center;
@@ -82,14 +79,17 @@ detalles
     height: 145px;
     transition: all .4s;
 }
+
 .list-circle .rounded-circle:hover {
     background-color: var(--danger);
     color: white;
     transition: all .4s;
 }
+
 .list-circle .rounded-circle:hover i {
     color: white;
 }
+
 .join-us {
     position: fixed;
     top: 150px;
@@ -101,6 +101,7 @@ detalles
     padding: 10px;
     z-index: 999;
 }
+
 .join-us a {
     display: flex;
     justify-content: center;
@@ -108,20 +109,24 @@ detalles
     text-decoration: none;
     transition: all .5s;
 }
+
 .join-us a:hover {
     font-weight: bold;
     transform: scale(1.05);
 }
+
 .join-us i {
     font-size: 32px;
     margin-right: 10px;
 }
+
 .img-slider {
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 400px;
 }
+
 @media only screen and (max-width: 600px) {
     .list-circle .rounded-circle {
         margin: 10px 0 10px 0;
@@ -130,24 +135,121 @@ detalles
         display: flex;
         flex-direction: row;
         justify-content: center;
-        background: rgba(0,0,0,.3);
+        background: rgba(0, 0, 0, .3);
         margin: 0!important;
     }
 }
 
-
-
 /**
 modificaciones bootstrap
 **/
-.card, .btn, .badge, .card-img, .card-img-top  {
+
+.card, .btn, .badge, .card-img, .card-img-top {
     border-radius: 0;
 }
+
 .carousel-caption {
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0, 0, 0, .6);
     padding: 15px;
 }
+
 .carousel-indicators {
     padding-bottom: 10px;
 }
 
+
+
+
+
+
+
+
+
+
+
+.notfound {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}
+
+.notfound {
+    max-width: 520px;
+    width: 100%;
+    line-height: 1.4;
+    text-align: center
+}
+
+.notfound .notfound-404 {
+    position: relative;
+    height: 240px
+}
+
+.notfound .notfound-404 h1 {
+    font-family: montserrat, sans-serif;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 252px;
+    font-weight: 900;
+    margin: 0;
+    color: #262626;
+    text-transform: uppercase;
+    letter-spacing: -40px;
+    margin-left: -20px
+}
+
+.notfound .notfound-404 h1>span {
+    text-shadow: -8px 0 0 #fff
+}
+
+.notfound .notfound-404 h3 {
+    font-family: cabin, sans-serif;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #262626;
+    margin: 0;
+    letter-spacing: 3px;
+    padding-left: 6px
+}
+
+.notfound h2 {
+    font-family: cabin, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #000;
+    margin-top: 0;
+    margin-bottom: 25px
+}
+
+@media only screen and (max-width:767px) {
+    .notfound .notfound-404 {
+        height: 200px
+    }
+    .notfound .notfound-404 h1 {
+        font-size: 200px
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .notfound .notfound-404 {
+        height: 162px
+    }
+    .notfound .notfound-404 h1 {
+        font-size: 162px;
+        height: 150px;
+        line-height: 162px
+    }
+    .notfound h2 {
+        font-size: 16px
+    }
+}

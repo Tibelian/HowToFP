@@ -1,0 +1,90 @@
+
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Titillium Web', sans-serif;
+}
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-left: 300px!important;
+}
+main footer {
+    margin-top: auto;
+    margin-right: 0!important;
+}
+
+
+
+
+/*
+barra lateral
+menú principal
+*/
+aside {
+    width: 300px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+aside nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+aside nav ul li {
+    display: block;
+    width: 100%;
+}
+aside nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    padding-left: 25px;
+    color: #eee;
+    text-transform: uppercase;
+    transition: all .7s;
+    font-size: 16px;
+}
+aside nav ul li a:hover, aside nav ul li a.active {
+    color: #fff;
+    background-color: rgba(0,0,0,.2);
+    text-decoration: none;
+    padding-left: 30px;
+}
+aside nav ul li a i {
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    font-size: 13px;
+    background-color: #eee;
+    color: var(--danger);
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+
+/**
+modificaciones bootstrap
+**/
+.card, .btn, .badge, .card-img, .card-img-top  {
+    border-radius: 0;
+}
+.carousel-caption {
+    background-color: rgba(0,0,0,.6);
+    padding: 15px;
+}
+.carousel-indicators {
+    padding-bottom: 10px;
+}
+.dropdown-menu.show {
+    left: -33px!important;
+}

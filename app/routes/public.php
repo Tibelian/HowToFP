@@ -3,7 +3,7 @@
 /*************
  * ERROR 404 *
  *************/
-$router->set404('App\Controller\Error404@show');
+$router->set404('App\Controller\Error\NotFound@show');
 
 /*************
  * HOME PAGE *

@@ -1,0 +1,23 @@
+
+<aside class="row bg-dark text-white flex-column">
+    
+    <div class="d-flex justify-content-center flex-column align-items-center p-2 m-3" style="background-color: rgba(0,0,0,.2);">
+        <i class="fas fa-user-lock display-4 text-center mb-2 text-danger"></i>
+        <p class="mb-0">Panel de Administrador</p>
+    </div>
+
+    <nav class="mt-4">
+        <ul>
+            <li class="mb-2"><a href="{{ website.url }}/administrator" {% if currentPage == 'summary' %}class="active"{% endif %}><i class="fas fa-chart-pie shadow-sm"></i> Resumen</a></li>
+            
+            <li><a href="{{ website.url }}/administrator/configuration" {% if currentPage == 'configuration' %}class="active"{% endif %}><i class="fas fa-cog shadow-sm"></i> Configuración</a></li>
+            <li class="mb-2"><a href="{{ website.url }}/administrator/uploads" {% if currentPage == 'uploads' %}class="active"{% endif %}><i class="fas fa-file-upload shadow-sm"></i> Subidas</a></li>
+
+            <li><a href="{{ website.url }}/administrator/news" {% if currentPage == 'news' %}class="active"{% endif %}><i class="fas fa-file shadow-sm"></i> Noticias</a></li>
+            <li><a href="{{ website.url }}/administrator/gallery" {% if currentPage == 'gallery' %}class="active"{% endif %}><i class="fas fa-image shadow-sm"></i> Galería</a></li>
+            <li><a href="{{ website.url }}/administrator/contact" {% if currentPage == 'contact' %}class="active"{% endif %}><i class="fas fa-phone shadow-sm"></i> Contacto</a></li>
+            <li><a href="{{ website.url }}/administrator/navigation" {% if currentPage == 'navigation' %}class="active"{% endif %}><i class="fas fa-heart shadow-sm"></i> Redes sociales</a></li>
+        </ul>
+    </nav>
+
+</aside>

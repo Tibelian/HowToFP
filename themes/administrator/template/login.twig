@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- css -->
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/all.min.css">
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+    <!-- favicon -->
+    <link rel="icon" href="{{ website.themeUrl }}/assets/img/favicon.jpeg" />
+
+    <!-- web title -->
+    <title>Panel de Administrador - {{ website.title }}</title>
+
+</head>
+<body class="bg-light">
+
+    <!-- main content -->
+    <div class="container-fluid mt-auto">
+        
+        <div class="row justify-content-center align-items-center flex-column">
+            <div class="row mb-4" style="min-width: 400px;">
+                <div class="col-4 d-flex">
+                    <i class="fas fa-user-lock display-4 ml-auto mt-2"></i>
+                </div>
+                <div class="col-8">
+                    <h1>{{ website.title }}</h1>
+                    <p>Panel de Administrador</p>
+                </div>
+            </div>
+            <form class="bg-white shadow-sm p-4" method="post" style="min-width: 400px;" action="{{ website.url }}/ajax/administrator/login">
+                <div class="form-group mb-1" data-validate="Enter username">
+                    <input class="form-control" type="text" name="username" placeholder="Nombre de usuario" required autocomplete="off">
+                </div>
+                <div class="form-group" data-validate="Enter password">
+                    <input class="form-control" type="password" name="password" placeholder="Contraseña" required autocomplete="off">
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="submit" class="btn btn-danger">Entrar</button>
+                    <a href="{{ website.url }}/administrator/lost" class="btn btn-dark">He olvidado mi contraseña</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- footer -->
+    <div class="container-fluid mt-auto">
+        {% include 'partials/footer.twig' %}
+    </div>
+
+    <!-- javascript -->
+    <script src="{{ website.themeUrl }}/assets/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="{{ website.themeUrl }}/assets/js/popper.min.js"></script>
+    <script src="{{ website.themeUrl }}/assets/js/bootstrap.min.js"></script>
+    <script src="{{ website.themeUrl }}/assets/js/main.js"></script>
+
+</body>
+</html>

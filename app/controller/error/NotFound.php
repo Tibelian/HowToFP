@@ -5,7 +5,7 @@
  * @see www.tibelian.com
  */
 
-namespace App\View;
+namespace App\Controller\Error;
 
 use App\Controller\Http\Response;
 use App\Controller\Http\Request;

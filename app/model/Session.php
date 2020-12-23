@@ -22,7 +22,7 @@ class Session {
         if(isset($_SESSION['user'])){
             
             // update the users data
-            $newUser = DataBase::getUser($_SESSION['user']->getId());
+            $newUser = DataBase::getUser($_SESSION['user']->getLogin());
             self::setLoggedIn(true);
             self::setUser($newUser);
             

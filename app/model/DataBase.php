@@ -27,7 +27,7 @@ class DataBase {
                 throw new WebSiteException(500, "The JSON file '" . $filename . "' is corrupted. Probably because the file is empty or malformed", "DataBase@load");
             }
         }else{
-            throw new WebSiteException(404, "The JSON file '" . $filename . "' does not exist on our database", "DataBase@load");
+            throw new WebSiteException(404, "The JSON file '" . $file . "' does not exist on our database", "DataBase@load");
         }
     }
     
@@ -41,22 +41,31 @@ class DataBase {
         file_put_contents($filePath, json_encode($data, JSON_PRETTY_PRINT), LOCK_EX);
     }
 
-
     /**
      * @param string $login
+     * @param string $encryptedPassword
      * @return User|null
      */
-    public static function getUser(string $login): ?User {
+    public static function getUser(string $login, string $encryptedPassword = null): ?User {
 
         $userList = self::load('user');
         foreach ($userList as $userJson) {
             if ($userJson["login"] == $login) {
+
                 $user = new User();
                 $user->setLogin($login);
                 $user->setEmail($userJson["email"]);
                 $user->setPassword($userJson["password"]);
                 $user->setAdmin($userJson["admin"]);
+
+                if ($encryptedPassword !== null) {
+                    if ($user->getPassword() !== $encryptedPassword) {
+                        return null;
+                    }
+                }
+                
                 return $user;
+
             }
         }
         return null;

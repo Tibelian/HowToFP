@@ -9,45 +9,42 @@
     <!-- css -->
     <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/all.min.css">
-    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/animate.min.css">
     <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
 
     <!-- favicon -->
-    <link rel="icon" href="{{ website.themeUrl }}/assets/img/schoolarmy.jpeg" />
+    <link rel="icon" href="{{ website.themeUrl }}/assets/img/favicon.jpeg" />
 
     <!-- web title -->
-    <title>Página no encontrada - HowToFp aka SchoolArmy</title>
+    <title>Resumen :: Panel de Administrador - {{ website.title }}</title>
 
 </head>
 <body class="bg-light">
 
-    <!-- header -->
+    <!-- aside -->
     <div class="container-fluid">
-        {% include 'partials/header.twig' %}
+        {% include 'partials/aside.twig' %}
     </div>
 
     <!-- main content -->
-    <div class="container-fluid">
-        <div class="notfound">
-            <div class="notfound-404">
-                <h3>Oops! Página no encontrada</h3>
-                <h1><span>4</span><span>0</span><span>4</span></h1>
-            </div>
-            <h2>lo sentimos, pero la página que estas buscando no se ha encontrado</h2>
-        </div>
-    </div>
+    <main>
 
-    <!-- footer -->
-    <div class="container-fluid mt-auto">
+        <!-- header -->
+        {% include 'partials/header.twig' %}
+
+        <section class="p-2">
+            RESUMEN
+        </section>
+
+        <!-- footer -->
         {% include 'partials/footer.twig' %}
-    </div>
+
+    </main>
 
     <!-- javascript -->
     <script src="{{ website.themeUrl }}/assets/js/jquery-3.4.1.slim.min.js"></script>
     <script src="{{ website.themeUrl }}/assets/js/popper.min.js"></script>
     <script src="{{ website.themeUrl }}/assets/js/bootstrap.min.js"></script>
-    <script src="{{ website.themeUrl }}/assets/js/owl.carousel.min.js"></script>
     <script src="{{ website.themeUrl }}/assets/js/main.js"></script>
 
 </body>

@@ -1,0 +1,14 @@
+
+<header class="d-flex w-100 bg-secondary p-2">
+    <a class="text-white" href="{{ website.url }}" target="_blank"><i class="fas fa-external-link-square-alt"></i> Abrir página {{ website.title }}</a>
+    <div class="d-flex ml-auto">
+        <div class="dropdown mr-1 p-0">
+            <button type="button" class="p-0 px-2 btn btn-secondary dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,10">
+                {{ session.user.login }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownUser">
+            <a class="dropdown-item" href="#">Ajustes</a>
+            <a class="dropdown-item" href="#">Cerrar sesión</a>
+        </div>
+  </div>
+</header>

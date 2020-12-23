@@ -3,23 +3,16 @@
 /************
  * REGISTER *
  ************/
-$router->get('/register', function() {
-    header('Location: ' . App\Model\WebSite::getUrl() . '/user/register');
-});
-$router->get('/user/register', '\App\Controller\User\Register@show');
+//$router->get('/administrator/register', 'App\Controller\Admin\Register@show');
 
 /*********
  * LOGIN *
  *********/
-$router->get('/login', function() {
-    header('Location: ' . App\Model\WebSite::getUrl() . '/user/login');
-});
-$router->get('/user/login', '\App\Controller\User\Login@show');
+$router->get('/administrator', 'App\Controller\Admin\Login@show');
+$router->post('/ajax/administrator/login', 'App\Controller\Admin\Login@do');
 
 /*****************
  * LOST PASSWORD *
  *****************/
-$router->get('/lost', function() {
-    header('Location: ' . App\Model\WebSite::getUrl() . '/user/lost');
-});
-$router->get('/user/lost', '\App\Controller\User\Lost@show');
+$router->get('/administrator/lost', 'App\Controller\Admin\Lost@show');
+$router->post('/ajax/administrator/lost', 'App\Controller\Admin\Lost@do');

@@ -9,11 +9,13 @@ namespace App\Controller\Admin;
 
 use App\Controller\Http\Response;
 use App\Controller\Http\Request;
+use App\Model\DataBase;
 use App\Model\WebSite;
 use App\Model\Session;
 use App\Model\Theme;
+use App\Model\User;
 
-class Gallery {
+class Configuration {
     
     public function show(): void {
 
@@ -21,11 +23,11 @@ class Gallery {
         Theme::change("administrator", false);
         Response::write(
             Theme::getTemplate()->render(
-                'gallery.twig', 
+                'configuration.twig', 
                 [
                     'website' => new WebSite(), 
                     'session' => new Session(),
-                    'currentPage' => 'gallery'
+                    'currentPage' => 'configuration'
                 ]
             )
         );

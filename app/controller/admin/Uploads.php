@@ -13,7 +13,7 @@ use App\Model\WebSite;
 use App\Model\Session;
 use App\Model\Theme;
 
-class Gallery {
+class Uploads {
     
     public function show(): void {
 
@@ -21,11 +21,11 @@ class Gallery {
         Theme::change("administrator", false);
         Response::write(
             Theme::getTemplate()->render(
-                'gallery.twig', 
+                'uploads.twig', 
                 [
                     'website' => new WebSite(), 
                     'session' => new Session(),
-                    'currentPage' => 'gallery'
+                    'currentPage' => 'uploads'
                 ]
             )
         );
