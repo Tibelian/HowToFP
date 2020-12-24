@@ -1,0 +1,10 @@
+{
+    "name": "Prueba HowToFP",
+    "host": "smtp.gmail.com",
+    "user": "lordiulian@gmail.com",
+    "password": "",
+    "port": 587,
+    "smtp": false,
+    "smtp_auth": false,
+    "smtp_secure": "tls"
+}

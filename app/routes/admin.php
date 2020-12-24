@@ -25,3 +25,5 @@ $router->mount('/administrator', function() use($router) {
     
 });
 
+// logout
+$router->get('/ajax/administrator/logout', 'App\Controller\Admin\Login@close');

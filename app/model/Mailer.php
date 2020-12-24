@@ -24,13 +24,12 @@ class Mailer {
     
     
     /**
-     * @param int $pos
      * @return void
      */
-    public static function setServer(int $pos): void{
+    public static function setServer(): void {
         
         // get the mail config
-        $server = OperationJSON::getMailerServer()[$pos];
+        $server = DataBase::load('website/mailer');
         
         // set the data
         self::$HOST = $server["host"];
@@ -48,8 +47,10 @@ class Mailer {
     /**
      * @return PHPMailer
      */
-    private static function getServer(): PHPMailer{
+    private static function getServer(): PHPMailer {
         
+        self::setServer();
+
         // 'true' enables exceptions
         $mail = new PHPMailer(true);
             
@@ -77,7 +78,7 @@ class Mailer {
      * @return void
      * @throws WebSiteException
      */
-    public static function send(String $email, String $subject, String $message): void{
+    public static function send(String $email, String $subject, String $message): void {
         try {
             
             // server settings

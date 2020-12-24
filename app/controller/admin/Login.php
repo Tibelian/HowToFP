@@ -23,7 +23,7 @@ class Login {
         Theme::change("administrator", false);
         Response::write(
             Theme::getTemplate()->render(
-                'login.twig', 
+                'user/login.twig', 
                 [
                     'website' => new WebSite(), 
                     'session' => new Session(),
@@ -61,6 +61,21 @@ class Login {
                 'message' => 'Los credenciales introducidos no son válidos.'
             ]);
         }
+
+    }
+
+    public function close(): void {
+
+        Response::ok();
+
+        $_SESSION['user'] = null;
+        Session::setUser(null);
+        Session::setLoggedIn(false);
+
+        Response::showJson([
+            'status'=> 'success',
+            'message' => '¡Has cerrado sesión con éxito!'
+        ]);
 
     }
     

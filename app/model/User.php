@@ -15,6 +15,7 @@ class User {
     private string $login;
     private string $password;
     private string $email;
+    private string $token;
     private bool $admin;
 
     public function getLogin(): string {
@@ -25,6 +26,9 @@ class User {
     }
     public function getEmail(): string {
         return $this->email;
+    }
+    public function getToken(): string {
+        return $this->token;
     }
     public function isAdmin(): bool {
         return $this->admin;
@@ -38,6 +42,9 @@ class User {
     }
     public function setEmail(string $email): void {
         $this->email = $email;
+    }
+    public function setToken(string $token): void {
+        $this->token = $token;
     }
     public function setAdmin(bool $admin): void {
         $this->admin = $admin;

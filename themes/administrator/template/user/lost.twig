@@ -16,7 +16,7 @@
     <link rel="icon" href="{{ website.themeUrl }}/assets/img/favicon.jpeg" />
 
     <!-- web title -->
-    <title>Panel de Administrador - {{ website.title }}</title>
+    <title>Contraseña olvidada :: Panel de Administrador - {{ website.title }}</title>
 
 </head>
 <body class="bg-light">
@@ -34,16 +34,17 @@
                     <p>Panel de Administrador</p>
                 </div>
             </div>
-            <form class="bg-white shadow-sm p-4" method="post" style="min-width: 400px;" action="{{ website.url }}/ajax/administrator/login">
-                <div class="form-group mb-1" data-validate="Enter username">
+            <form class="bg-white shadow-sm p-4" method="post" style="min-width: 400px;" action="{{ website.url }}/ajax/administrator/lost">
+                <p class="font-weight-bold"><i class="fas fa-redo-alt"></i> Recuperar cuenta</p>
+                <div class="form-group mb-1">
                     <input class="form-control" type="text" name="username" placeholder="Nombre de usuario" required autocomplete="off">
                 </div>
-                <div class="form-group" data-validate="Enter password">
-                    <input class="form-control" type="password" name="password" placeholder="Contraseña" required autocomplete="off">
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Correo electrónico" required autocomplete="off">
                 </div>
                 <div class="d-flex justify-content-between mt-3">
-                    <button type="submit" class="btn btn-danger">Entrar</button>
-                    <a href="{{ website.url }}/administrator/lost" class="btn btn-dark">He olvidado mi contraseña</a>
+                    <button type="submit" class="btn btn-danger">Recuperar cuenta</button>
+                    <a href="{{ website.url }}/administrator" class="btn btn-dark">Volver al inicio de sesión</a>
                 </div>
             </form>
         </div>

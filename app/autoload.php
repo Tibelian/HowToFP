@@ -22,13 +22,8 @@ require __DIR__ . '/controller/AboutUs.php';
 require __DIR__ . '/controller/Contact.php';
 require __DIR__ . '/controller/News.php';
 
-require __DIR__ . '/controller/user/Panel.php';
-require __DIR__ . '/controller/user/Register.php';
-require __DIR__ . '/controller/user/Login.php';
-require __DIR__ . '/controller/user/Lost.php';
-require __DIR__ . '/controller/user/Settings.php';
-
 require __DIR__ . '/controller/admin/Login.php';
+require __DIR__ . '/controller/admin/Lost.php';
 require __DIR__ . '/controller/admin/Summary.php';
 require __DIR__ . '/controller/admin/News.php';
 require __DIR__ . '/controller/admin/Gallery.php';

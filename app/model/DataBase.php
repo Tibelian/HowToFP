@@ -58,6 +58,10 @@ class DataBase {
                 $user->setPassword($userJson["password"]);
                 $user->setAdmin($userJson["admin"]);
 
+                if (isset($userJson['lostToken'])) {
+                    $user->setToken($userJson['lostToken']);
+                }
+
                 if ($encryptedPassword !== null) {
                     if ($user->getPassword() !== $encryptedPassword) {
                         return null;

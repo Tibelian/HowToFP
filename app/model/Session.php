@@ -9,7 +9,7 @@ namespace App\Model;
 
 class Session {
 
-    private static User $user;
+    private static ?User $user;
     private static bool $loggedIn = false;
     private static Token $token;
     
@@ -49,7 +49,7 @@ class Session {
         self::$loggedIn = $loggedIn;
     }
     
-    public static function getUser(): User {
+    public static function getUser(): ?User {
         return self::$user;
     }
 
@@ -57,7 +57,7 @@ class Session {
         return self::$token;
     }
 
-    public static function setUser(User $user): void {
+    public static function setUser(?User $user): void {
         self::$user = $user;
     }
 
