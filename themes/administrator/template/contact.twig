@@ -32,8 +32,53 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="p-2">
-            CONTACTO
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Servidor de mensajería</h2>
+            <form method="post" action="{{ website.url }}/ajax/administrator/contact">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="name">Nombre:</label>
+                        <input type="text" class="form-control" name="name" id="name" required value="{{ mail.name }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="user">Usuario:</label>
+                        <input type="text" class="form-control" name="user" id="user" required value="{{ mail.user }}">
+                    </div>
+                    <div class="form-group col">
+                        <label for="name">Contraseña:</label>
+                        <input type="password" class="form-control" name="password" id="password" required value="{{ mail.password }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="host">Host:</label>
+                        <input type="text" class="form-control" name="host" id="host" required value="{{ mail.host }}">
+                    </div>
+                    <div class="form-group col">
+                        <label for="port">Puerto:</label>
+                        <input type="number" class="form-control" name="port" id="port" required value="{{ mail.port }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="smtp">SMTP:</label>
+                        <select class="form-control" name="smtp" required>
+                            <option {% if mail.smtp %}selected{% endif %} value="true">Habilitado</option>
+                            <option {% if not mail.smtp %}selected{% endif %} value="false">Deshabilitado</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="smtp_secure">Encriptación:</label>
+                        <select class="form-control" name="smtp_secure" id="smtp_secure" required>
+                            <option {% if mail.smtpSecure == 'ssl' %}selected{% endif %} value="ssl">SSL</option>
+                            <option {% if mail.smtpSecure == 'tls' %}selected{% endif %} value="tls">TLS</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger">Guardar</button>
+            </form>
         </section>
 
         <!-- footer -->

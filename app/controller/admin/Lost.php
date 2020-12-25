@@ -65,6 +65,7 @@ class Lost {
                 'status'=> 'error',
                 'message' => 'Debes introducir todos los datos obligatorios.'
             ]);
+            return;
         }
         $data = $request->getPOST();
 
@@ -90,7 +91,46 @@ class Lost {
 
     }
 
-    public function generateToken(User $user): bool {
+    public function recover(): void {
+
+        Response::ok();
+        $request = new Request();
+        if(!$request->issetPOST(["username", "password", "password2", "token"])) {
+            Response::showJson([
+                'status'=> 'error',
+                'message' => 'Debes introducir todos los datos obligatorios.'
+            ]);
+            return;
+        }
+        $data = $request->getPOST();
+
+        $user = DataBase::getUser($data["username"]);
+        if($user instanceof User && $user->getToken() == $data['token']) {
+            if($data["password"] === $data["password2"]) {
+
+                $this->changePassword($user->getLogin(), $data["password"]);
+
+                Response::showJson([
+                    'status'=> 'success',
+                    'message' => 'La contraseña se ha actualizado con éxito'
+                ]);
+
+            } else {
+                Response::showJson([
+                    'status'=> 'error',
+                    'message' => 'Las contraseñas introducidas no coinciden.'
+                ]);
+            }
+        } else {
+            Response::showJson([
+                'status'=> 'error',
+                'message' => 'El token para cambiar su contraseña no es válido.'
+            ]);
+        }
+
+    }
+
+    private function generateToken(User $user): bool {
 
         $token = sha1(date('H:i:sd-m-Y') . rand(10000,999999));
         $userList = DataBase::load('user');
@@ -109,8 +149,23 @@ class Lost {
             Mailer::send($user->getEmail(), $subject, $message);
             return true;
         } catch (WebSiteException $we) {
+            echo $we->getMessage();
             return false;
         }
     }
-    
+
+    private function changePassword(string $username, string $password): void {
+
+        $userList = DataBase::load('user');
+        foreach($userList as &$userJson) {
+            if($userJson['login'] == $username) {
+                $userJson['password'] = sha1($password);
+                unset($userJson['lostToken']);
+                break;
+            }
+        }
+        DataBase::create('user', $userList);
+
+    }
+
 }

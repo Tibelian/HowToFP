@@ -9,7 +9,7 @@ namespace App\Model;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-use App\DataAccessObject\OperationJSON;
+use PHPMailer\PHPMailer\SMTP;
 
 class Mailer {
     
@@ -47,7 +47,7 @@ class Mailer {
     /**
      * @return PHPMailer
      */
-    private static function getServer(): PHPMailer {
+    private static function prepare(): PHPMailer {
         
         self::setServer();
 
@@ -82,8 +82,8 @@ class Mailer {
         try {
             
             // server settings
-            $mail = self::getServer();
-            
+            $mail = self::prepare();
+
             // reciper
             $mail->addAddress($email);
 

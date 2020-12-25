@@ -1,10 +1,8 @@
 [
     {
-        "id": "1",
         "login": "tibelian",
         "email": "iuliandafinescu@gmail.com",
         "password": "7c4a8d09ca3762af61e59520943dc26494f8941b",
-        "admin": true,
-        "lostToken": "34906667f0c916b2e52cd3832bbc5fb3bbc863df"
+        "admin": true
     }
 ]

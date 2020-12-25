@@ -32,8 +32,76 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="p-2">
-            NOTICIAS
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Agregar nueva noticia</h2>
+            <form method="post" action="{{ website.url }}/ajax/administrator/news">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="title"><i class="fas fa-align-justify"></i> Título:</label>
+                        <input type="text" class="form-control" name="title" id="title" required>
+                    </div>
+                    <div class="form-group col">
+                        <label for="image"><i class="fas fa-link"></i> Portada:</label>
+                        <select class="form-control" name="image" id="image">
+                            <option></option>
+                            {% for file in gallery %}
+                            <option value="{{ file.url }}">{{ file.name }} - {{ file.description }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="description"><i class="fas fa-align-justify"></i> Descripción <small>(se permite HTML)</small>:</label>
+                        <textarea class="form-control" name="description" id="description" required></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="buttonTitle"><i class="fas fa-align-justify"></i> Texto botón:</label>
+                        <input type="text" class="form-control" name="buttonTitle" id="buttonTitle" required>
+                    </div>
+                    <div class="form-group col">
+                        <label for="url"><i class="fas fa-align-justify"></i> Enlace botón:</label>
+                        <input type="text" class="form-control" name="url" id="url" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger">Guardar</button>
+            </form>
+        </section>
+
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Listado noticias</h2>
+            <table class="table table-sm table-hover table-light">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Portada</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for link in linkList %}
+                    <tr>
+                        <td>{{ link.id }}</td>
+                        <td>{{ link.image }}</td>
+                        <td>{{ link.title }}</td>
+                        <td>{{ link.description }}</td>
+                        <td>
+                            <form method="post" action="#">
+                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">No se han encontrado noticias</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </section>
 
         <!-- footer -->

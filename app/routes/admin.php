@@ -26,4 +26,7 @@ $router->mount('/administrator', function() use($router) {
 });
 
 // logout
-$router->get('/ajax/administrator/logout', 'App\Controller\Admin\Login@close');
+$router->post('/ajax/administrator/logout', 'App\Controller\Admin\Login@close');
+
+// save web config
+$router->post('/ajax/administrator/configuration', 'App\Controller\Admin\Configuration@do');

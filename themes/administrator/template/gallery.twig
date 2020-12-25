@@ -32,9 +32,63 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="p-2">
-            GALERÍA
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Enlazar archivo subido con galería</h2>
+            <form method="post" action="{{ website.url }}/ajax/administrator/gallery">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="file">Archivo subido <small>(formato imagen: png-jpeg)</small>:</label>
+                        <select class="form-control" name="file">
+                            <option></option>
+                            {% for file in fileList %}
+                            <option value="{{ file.id }}">{{ file.title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="description">Descripción:</label>
+                        <input type="text" class="form-control" readonly id="readonly">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger">Guardar</button>
+            </form>
         </section>
+
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Imágenes en la galería</h2>
+            <table class="table table-sm table-hover table-light">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Descripción</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for image in gallery %}
+                    <tr>
+                        <td>{{ image.url }}</td>
+                        <td>{{ image.description }}</td>
+                        <td>
+                            <form method="post" action="#">
+                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3">No se han encontrado imágenes</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Vista previa de la galería</h2>
+            
+        </section>
+
 
         <!-- footer -->
         {% include 'partials/footer.twig' %}

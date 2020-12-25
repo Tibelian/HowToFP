@@ -32,8 +32,53 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="p-2">
-            REDES SOCIALES
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Agregar enlace de navegación</h2>
+            <form method="post" action="{{ website.url }}/ajax/administrator/upload">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="name"><i class="fas fa-align-justify"></i> Nombre:</label>
+                        <input type="text" class="form-control" name="name" id="name" required>
+                    </div>
+                    <div class="form-group col">
+                        <label for="url"><i class="fas fa-link"></i> Enlace :</label>
+                        <input type="url" class="form-control" class="w-100 p-1" name="url" id="url" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger">Añadir</button>
+            </form>
+        </section>
+
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Lista de enlaces</h2>
+            <table class="table table-hover table-light">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Enlace</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for link in linkList %}
+                    <tr>
+                        <td>{{ link.id }}</td>
+                        <td>{{ link.name }}</td>
+                        <td>{{ link.url }}</td>
+                        <td>
+                            <form method="post" action="#">
+                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4">No se ha encontrado ningún enlace</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </section>
 
         <!-- footer -->

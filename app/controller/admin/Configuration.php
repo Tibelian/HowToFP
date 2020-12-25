@@ -33,5 +33,37 @@ class Configuration {
         );
         
     }
+
+    public function do(): void {
+
+        Response::ok();
+
+        $request = new Request();
+        if(!$request->issetPOST(['title', 'url', 'favicon', 'theme', 'cdn', 'admin_email'])) {
+            Response::showJson([
+                'status' => 'error',
+                'message' => 'Debes completar todos los campos obligatorios.'
+            ]);
+            return;
+        }
+
+        $data = $request->getPOST();
+        $configFile = DataBase::load('website/config');
+
+        $configFile['title'] = $data['title'];
+        $configFile['url'] = $data['url'];
+        $configFile['favicon'] = $data['favicon'];
+        $configFile['theme'] = $data['theme'];
+        $configFile['cdn'] = $data['cdn'];
+        $configFile['admin_email'] = $data['admin_email'];
+
+        DataBase::create('website/config', $configFile);
+
+        Response::showJson([
+            'status' => 'success',
+            'message' => 'La configuración ha sido guardada con éxito.'
+        ]);
+
+    }
     
 }

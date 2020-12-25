@@ -32,8 +32,45 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="p-2">
-            ARCHIVOS SUBIDOS
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Subir archivo al servidor</h2>
+            <form method="post" action="{{ website.url }}/ajax/administrator/upload">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="description"><i class="fas fa-align-justify"></i> Descripción archivo:</label>
+                        <input type="text" class="form-control" name="description" id="description">
+                    </div>
+                    <div class="form-group col">
+                        <label for="file"><i class="fas fa-file"></i> Archivo <small>(Formatos permitidos: png, jpeg, pdf)</small>:</label>
+                        <input type="file" class="w-100 p-1" name="url" id="url" value="{{ website.url }}">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger">Subir</button>
+            </form>
+        </section>
+
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Archivos subidos al servidor</h2>
+            <div class="row">
+                {% for file in fileList %}
+
+                <div class="col-md-6 border">
+                    {{  file.preview }}
+                    <p>Título: <strong>{{  file.title }}</strong></p>
+                    <p>Formato: <strong>{{  file.format }}</strong></p>
+                    <p>Tamaño: <strong>{{  file.size }}</strong></p>
+                    <p>Descripción: <strong>{{  file.description }}</strong></p>
+                    <form method="post" action="#">
+                        <button type="submit" class="btn btn-sm btn-danger" title="Eliminar archivo"><i class="fas fa-trash"></i></button>
+                    </form>
+                </div>
+
+                {% else %}
+
+                <div class="col-12">No se han encontrado archivos</div>
+
+                {% endfor %}
+            </div>
         </section>
 
         <!-- footer -->

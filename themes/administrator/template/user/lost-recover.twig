@@ -36,8 +36,10 @@
             </div>
 
             {% if user.token == token %} 
-                <form class="bg-white shadow-sm p-4" method="post" style="min-width: 400px;" action="{{ website.url }}/ajax/administrator/lost">
+            <form class="bg-white shadow-sm p-4" method="post" style="min-width: 400px;" action="{{ website.url }}/ajax/administrator/recover">
                 <p class="font-weight-bold"><i class="fas fa-key"></i> Cambiar contraseña de {{ user.login }}</p>
+                <input type="hidden" name="username" value="{{ user.login }}">
+                <input type="hidden" name="token" value="{{ token }}">
                 <div class="form-group mb-1">
                     <input class="form-control" type="password" name="password" placeholder="Nueva contraseña" required autocomplete="off">
                 </div>
