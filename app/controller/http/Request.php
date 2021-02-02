@@ -51,7 +51,7 @@ class Request {
     public function issetFILES(array $data){
         $isset = true;
         foreach ($data as $value) {
-            if(!isset($this->POST[$value])){
+            if(!isset($this->FILES[$value])){
                 $isset = false;
             }
         }
@@ -61,7 +61,7 @@ class Request {
     public function issetCOOKIES(array $data){
         $isset = true;
         foreach ($data as $value) {
-            if(!isset($this->POST[$value])){
+            if(!isset($this->COOKIES[$value])){
                 $isset = false;
             }
         }
