@@ -11,6 +11,7 @@ require __DIR__ . '/model/Mailer.php';
 require __DIR__ . '/model/User.php';
 require __DIR__ . '/model/Session.php';
 require __DIR__ . '/model/Token.php';
+require __DIR__ . '/model/UploadedFile.php';
 
 require __DIR__ . '/controller/http/Request.php';
 require __DIR__ . '/controller/http/Response.php';
