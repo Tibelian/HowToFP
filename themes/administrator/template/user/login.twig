@@ -34,7 +34,8 @@
                     <p>Panel de Administrador</p>
                 </div>
             </div>
-            <form class="bg-white shadow-sm p-4" method="post" style="min-width: 400px;" action="{{ website.url }}/ajax/administrator/login">
+            <form class="bg-white shadow-sm p-4" method="post" style="min-width: 400px;" action="#">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/login">
                 <p class="font-weight-bold"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</p>
                 <div class="form-group mb-1" data-validate="Enter username">
                     <input class="form-control" type="text" name="username" placeholder="Nombre de usuario" required autocomplete="off">
