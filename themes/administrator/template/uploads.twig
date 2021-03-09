@@ -34,15 +34,15 @@
 
         <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
             <h2 class="border-bottom pb-2">Subir archivo al servidor</h2>
-            <form method="post" action="{{ website.url }}/ajax/administrator/upload">
+            <form method="post" action="{{ website.url }}/ajax/administrator/uploads/add" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="description"><i class="fas fa-align-justify"></i> Descripción archivo:</label>
-                        <input type="text" class="form-control" name="description" id="description">
+                        <input type="text" class="form-control" name="description" id="description" required>
                     </div>
                     <div class="form-group col">
-                        <label for="file"><i class="fas fa-file"></i> Archivo <small>(Formatos permitidos: png, jpeg, pdf)</small>:</label>
-                        <input type="file" class="w-100 p-1" name="url" id="url" value="{{ website.url }}">
+                        <label for="file"><i class="fas fa-file"></i> Archivo <small>(Formatos permitidos: png, jpg, jpeg, pdf)</small>:</label>
+                        <input type="file" class="w-100 p-1" name="file" id="file" value="{{ website.url }}">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-danger">Subir</button>
@@ -54,13 +54,13 @@
             <div class="row">
                 {% for file in fileList %}
 
-                <div class="col-md-6 border">
-                    {{  file.preview }}
-                    <p>Título: <strong>{{  file.title }}</strong></p>
-                    <p>Formato: <strong>{{  file.format }}</strong></p>
-                    <p>Tamaño: <strong>{{  file.size }}</strong></p>
+                <div class="col-md-6 border upload-file">
+                    <img src="{{ website.url }}/{{  file.path }}" width="100px">
+                    <p>Título: <strong>{{  file.basename }}</strong></p>
+                    <p>Tamaño: <strong>{{  file.size }} bytes</strong></p>
                     <p>Descripción: <strong>{{  file.description }}</strong></p>
-                    <form method="post" action="#">
+                    <form method="post" action="{{ website.url }}/ajax/administrator/uploads/delete">
+                        <input type="hidden" name="id" value="{{ file.id }}">
                         <button type="submit" class="btn btn-sm btn-danger" title="Eliminar archivo"><i class="fas fa-trash"></i></button>
                     </form>
                 </div>

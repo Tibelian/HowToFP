@@ -34,7 +34,7 @@
 
         <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
             <h2 class="border-bottom pb-2">Agregar nueva noticia</h2>
-            <form method="post" action="{{ website.url }}/ajax/administrator/news">
+            <form method="post" action="{{ website.url }}/ajax/administrator/news/add">
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="title"><i class="fas fa-align-justify"></i> Título:</label>
@@ -83,12 +83,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for link in linkList %}
+                    {% for article in articleList %}
                     <tr>
-                        <td>{{ link.id }}</td>
-                        <td>{{ link.image }}</td>
-                        <td>{{ link.title }}</td>
-                        <td>{{ link.description }}</td>
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.image }}</td>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.description }}</td>
                         <td>
                             <form method="post" action="#">
                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>

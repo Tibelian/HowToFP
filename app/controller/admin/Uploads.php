@@ -13,10 +13,21 @@ use App\Model\WebSite;
 use App\Model\Session;
 use App\Model\Theme;
 use App\Model\DataBase;
+use App\Model\UploadFile;
 
 class Uploads {
     
     public function show(): void {
+
+        $dbFileList = DataBase::load('upload');
+        $fileList = [];
+        foreach($dbFileList as $dbFile) {
+            $tmpObj = new UploadFile($dbFile['path']);
+            $tmpObj->setDescription($dbFile['description']);
+            $tmpObj->setPath($dbFile['path']);
+            $tmpObj->setId($dbFile['id']);
+            $fileList[] = $tmpObj;
+        }
 
         Response::ok();
         Theme::change("administrator", false);
@@ -26,7 +37,8 @@ class Uploads {
                 [
                     'website' => new WebSite(), 
                     'session' => new Session(),
-                    'currentPage' => 'uploads'
+                    'currentPage' => 'uploads',
+                    'fileList' => $fileList
                 ]
             )
         );
@@ -58,6 +70,10 @@ class Uploads {
 
         if($fileExtension == 'pdf' || getimagesize($tempFile)) {
             
+            if(!file_exists($targetDir)) {
+                mkdir($targetDir, 0755);
+            }
+
             if(move_uploaded_file($tempFile, $targetFile)) { 
 
                 $newFile = [];
@@ -68,7 +84,7 @@ class Uploads {
                 $allUploads = DataBase::load('upload');
                 $allUploads[] = $newFile;
         
-                DataBase::create('links', $allUploads);
+                DataBase::create('upload', $allUploads);
                 Response::showJson([
                     'status' => 'success',
                     'message' => 'El archivo se ha guardado con éxito.'
@@ -76,8 +92,8 @@ class Uploads {
 
             } else {
                 Response::showJson([
-                    'status' => 'success',
-                    'message' => 'No hemos podido subir el archivo.'
+                    'status' => 'warning',
+                    'message' => 'No hemos podido subir el archivo. ' . $tempFile . ' --- ' . $targetFile
                 ]);
             }
 
@@ -107,10 +123,11 @@ class Uploads {
 
         $allUploads = DataBase::load('upload');
 
-        foreach($allUploads as &$file) {
-            if ($file['id'] == $file['id']) {
-                unlink(__DIR__ . '/../../../' . $file['path']);
-                unset($image);
+        for($i = 0; $i < sizeof($allUploads); $i++) {
+            if($allUploads[$i]["id"] == $data["id"]) {
+                unlink(__DIR__ . '/../../../' . $allUploads[$i]['path']);
+                //unset($allUploads[$i]);
+                array_splice($allUploads, $i, 1);
                 break;
             }
         }
