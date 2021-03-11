@@ -34,7 +34,8 @@
 
         <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
             <h2 class="border-bottom pb-2">Ajustes del sitio web</h2>
-            <form method="post" action="{{ website.url }}/ajax/administrator/configuration">
+            <form method="post" action="#">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/configuration">
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="title"><i class="fas fa-id-card-alt"></i> Título web:</label>

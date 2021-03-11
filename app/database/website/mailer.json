@@ -3,8 +3,8 @@
     "host": "smtp.gmail.com",
     "user": "lordiulian@gmail.com",
     "password": "",
-    "port": 465,
-    "smtp": true,
+    "port": "465",
+    "smtp": "true",
     "smtp_auth": true,
     "smtp_secure": "ssl"
 }

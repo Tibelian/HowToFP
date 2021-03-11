@@ -32,9 +32,13 @@ $router->post('/ajax/administrator/logout', 'App\Controller\Admin\Login@close');
 $router->post('/ajax/administrator/configuration', 'App\Controller\Admin\Configuration@do');
 
 // manage file uploads
+$router->get('/ajax/administrator/uploads/list', 'App\Controller\Admin\Uploads@list');
 $router->post('/ajax/administrator/uploads/add', 'App\Controller\Admin\Uploads@add');
 $router->post('/ajax/administrator/uploads/delete', 'App\Controller\Admin\Uploads@delete');
 
 // manage articles
 $router->post('/ajax/administrator/news/add', 'App\Controller\Admin\News@add');
 $router->post('/ajax/administrator/news/delete', 'App\Controller\Admin\News@delete');
+
+
+$router->post('/ajax/administrator/contact', 'App\Controller\Admin\Contact@do');
