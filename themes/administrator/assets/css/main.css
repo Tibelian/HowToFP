@@ -18,6 +18,13 @@ main footer {
     margin-right: 0!important;
 }
 
+#alert-container {
+    position: fixed;
+    right: 10px;
+    bottom: 30px;
+    z-index: 9999;
+}
+
 
 
 
@@ -87,4 +94,7 @@ modificaciones bootstrap
 }
 .dropdown-menu.show {
     left: -33px!important;
+}
+.bg-hover:hover {
+    background-color: rgba(0,0,0,.05);
 }

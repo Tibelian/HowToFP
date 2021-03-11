@@ -8,9 +8,13 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownUser">
             <a class="dropdown-item" href="#">Ajustes</a>
-            <form method="post" action="{{ website.url }}/ajax/administrator/logout">
+            <form method="post" action="#">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/logout">
+                <input type="hidden" name="callback" value="redirectHome">
                 <button type="submit" class="dropdown-item">Cerrar sesión</button>
             </form>
         </div>
   </div>
 </header>
+
+<div id="alert-container"></div>

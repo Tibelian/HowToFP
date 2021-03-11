@@ -34,7 +34,9 @@
 
         <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
             <h2 class="border-bottom pb-2">Subir archivo al servidor</h2>
-            <form method="post" action="{{ website.url }}/ajax/administrator/uploads/add" enctype="multipart/form-data">
+            <form method="post" action="#" enctype="multipart/form-data" id="file-add-form">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/uploads/add">
+                <input type="hidden" name="callback" value="refreshUploadsAndClear">
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="description"><i class="fas fa-align-justify"></i> Descripción archivo:</label>
@@ -42,7 +44,7 @@
                     </div>
                     <div class="form-group col">
                         <label for="file"><i class="fas fa-file"></i> Archivo <small>(Formatos permitidos: png, jpg, jpeg, pdf)</small>:</label>
-                        <input type="file" class="w-100 p-1" name="file" id="file" value="{{ website.url }}">
+                        <input type="file" class="w-100 p-1" name="file" id="file" value="{{ website.url }}" required>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-danger">Subir</button>
@@ -51,17 +53,21 @@
 
         <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
             <h2 class="border-bottom pb-2">Archivos subidos al servidor</h2>
-            <div class="row">
+            <div class="row mx-2" id="file-list">
                 {% for file in fileList %}
 
-                <div class="col-md-6 border upload-file">
-                    <img src="{{ website.url }}/{{  file.path }}" width="100px">
-                    <p>Título: <strong>{{  file.basename }}</strong></p>
-                    <p>Tamaño: <strong>{{  file.size }} bytes</strong></p>
-                    <p>Descripción: <strong>{{  file.description }}</strong></p>
-                    <form method="post" action="{{ website.url }}/ajax/administrator/uploads/delete">
+                <div class="col-md-6 col-lg-4 upload-file d-flex flex-column align-items-center bg-hover rounded">
+                    <a href="{{website.url}}/{{file.path}}" target="_blank">
+                        <img src="{{ website.url }}/{{  file.path }}" width="100px" class="my-2">
+                    </a>
+                    <p class="m-0">Título: <strong>{{  file.basename }}</strong></p>
+                    <p class="m-0">Tamaño: <strong>{{  file.size }} bytes</strong></p>
+                    <p class="m-0">Descripción: <strong>{{  file.description }}</strong></p>
+                    <form method="post" action="#" class="my-2">
+                        <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/uploads/delete">
+                        <input type="hidden" name="callback" value="refreshUploads">
                         <input type="hidden" name="id" value="{{ file.id }}">
-                        <button type="submit" class="btn btn-sm btn-danger" title="Eliminar archivo"><i class="fas fa-trash"></i></button>
+                        <button type="submit" class="btn btn-sm btn-danger" title="Eliminar archivo">Eliminar archivo <i class="fas fa-trash"></i></button>
                     </form>
                 </div>
 

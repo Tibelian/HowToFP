@@ -13,7 +13,7 @@ use App\Model\WebSite;
 use App\Model\Session;
 use App\Model\Theme;
 use App\Model\DataBase;
-use App\Model\UploadFile;
+use App\Model\UploadedFile;
 
 class Uploads {
     
@@ -22,7 +22,7 @@ class Uploads {
         $dbFileList = DataBase::load('upload');
         $fileList = [];
         foreach($dbFileList as $dbFile) {
-            $tmpObj = new UploadFile($dbFile['path']);
+            $tmpObj = new UploadedFile($dbFile['path']);
             $tmpObj->setDescription($dbFile['description']);
             $tmpObj->setPath($dbFile['path']);
             $tmpObj->setId($dbFile['id']);
@@ -43,6 +43,37 @@ class Uploads {
             )
         );
         
+    }
+
+    public function list(): void {
+
+        Response::ok();
+
+        $dbFileList = DataBase::load('upload');
+        $fileList = [];
+        foreach($dbFileList as $dbFile) {
+            $tmpObj = new UploadedFile($dbFile['path']);
+            $tmpObj->setDescription($dbFile['description']);
+            $tmpObj->setPath($dbFile['path']);
+            $tmpObj->setId($dbFile['id']);
+            $fileList[] = [
+                'id' => $tmpObj->getId(),
+                'basename' => $tmpObj->getBasename(),
+                'path' => $tmpObj->getPath(),
+                'size' => $tmpObj->getSize(),
+                'description' => $tmpObj->getDescription(),
+                'realpath' => $tmpObj->getRealPath(),
+                'extension' => $tmpObj->getExtension(),
+                'createtime' => $tmpObj->getCTime(),
+                'type' => $tmpObj->getType()
+            ];
+        }
+
+        Response::showJson([
+            'status' => 'success',
+            'data' => $fileList
+        ]);
+
     }
 
     public function add(): void {
@@ -74,10 +105,17 @@ class Uploads {
                 mkdir($targetDir, 0755);
             }
 
+            $id = uniqid();
+
+            if(file_exists($targetFile)) {
+                $fileName = pathinfo($fileName, PATHINFO_FILENAME).'-'.$id.'.'.$fileExtension;
+                $targetFile  = $targetDir.$fileName;
+            }
+
             if(move_uploaded_file($tempFile, $targetFile)) { 
 
                 $newFile = [];
-                $newFile['id'] = uniqid();
+                $newFile['id'] = $id;
                 $newFile['path'] = 'uploads/' . date('d-m-Y') . '/' . $fileName;
                 $newFile['description'] = $data['description'];
         

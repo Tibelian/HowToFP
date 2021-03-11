@@ -34,9 +34,11 @@
                     <p>Panel de Administrador</p>
                 </div>
             </div>
+            <div id="alert-container"></div>
 
             {% if user.token == token %} 
-            <form class="bg-white shadow-sm p-4" method="post" style="min-width: 400px;" action="{{ website.url }}/ajax/administrator/recover">
+            <form class="bg-white shadow-sm p-4" method="post" style="min-width: 400px;" action="#">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/recover">
                 <p class="font-weight-bold"><i class="fas fa-key"></i> Cambiar contraseña de {{ user.login }}</p>
                 <input type="hidden" name="username" value="{{ user.login }}">
                 <input type="hidden" name="token" value="{{ token }}">
