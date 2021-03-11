@@ -98,3 +98,16 @@ modificaciones bootstrap
 .bg-hover:hover {
     background-color: rgba(0,0,0,.05);
 }
+.img-slider {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 400px;
+}
+
+
+
+
+.panel-heading {
+    background-color: rgba(0,0,0,.06);
+}

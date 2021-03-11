@@ -39,7 +39,7 @@ class News {
                     'session' => new Session(),
                     'currentPage' => 'news',
                     'fileList' => $fileList,
-                    'articleList' => []
+                    'articleList' => DataBase::load('news')
                 ]
             )
         );
@@ -99,9 +99,9 @@ class News {
 
         $allNewsList = DataBase::load('news');
 
-        foreach($allNewsList as &$article) {
-            if ($article['id'] == $data['id']) {
-                unset($article);
+        for ($i = 0; $i < sizeof($allNewsList); $i++) {
+            if ($allNewsList[$i]['id'] == $data['id']) {
+                array_splice($allNewsList, $i, 1);
                 break;
             }
         }
