@@ -9,6 +9,7 @@
     <!-- css -->
     <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/all.min.css">
+    <link rel="stylesheet" href="{{ website.themeUrl }}/assets/summernote.min.css">
     <link rel="stylesheet" href="{{ website.themeUrl }}/assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
 
@@ -36,37 +37,46 @@
             <h2 class="border-bottom pb-2">Agregar nueva noticia</h2>
             <form method="post" action="#">
                 <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/news/add">
+                <input type="hidden" name="callback" value="refreshWindow">
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="title"><i class="fas fa-align-justify"></i> Título:</label>
+                        <label for="title"><i class="fas fa-heading"></i> Título:</label>
                         <input type="text" class="form-control" name="title" id="title" required>
                     </div>
                     <div class="form-group col">
-                        <label for="image"><i class="fas fa-link"></i> Portada:</label>
-                        <select class="form-control" name="image" id="image">
+                        <label for="image"><i class="fas fa-link"></i> Portada <small>(archivos subidos)</small>: <span id="img-select"></span></label>
+                        <select class="form-control" name="image" id="image" title="Seleccionar una portada" onchange="showImage(this)" required>
                             <option></option>
-                            {% for file in gallery %}
-                            <option value="{{ file.url }}">{{ file.name }} - {{ file.description }}</option>
+                            {% for file in fileList %}
+                            <option value="{{ website.url ~ '/' ~ file.path }}">{{ file.basename }} - {{ file.description }}</option>
                             {% endfor %}
                         </select>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="description"><i class="fas fa-align-justify"></i> Descripción <small>(se permite HTML)</small>:</label>
-                        <textarea class="form-control" name="description" id="description" required></textarea>
+                        <label for="description"><i class="fas fa-align-justify"></i> Contenido</small>:</label>
+                        <textarea class="form-control" name="content" id="description" required></textarea>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label for="buttonTitle"><i class="fas fa-align-justify"></i> Texto botón:</label>
-                        <input type="text" class="form-control" name="buttonTitle" id="buttonTitle" required>
-                    </div>
-                    <div class="form-group col">
-                        <label for="url"><i class="fas fa-align-justify"></i> Enlace botón:</label>
-                        <input type="text" class="form-control" name="url" id="url" required>
+
+                <div class="collapse" id="buttonCollapse">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="buttonTitle"><i class="fas fa-hand-pointer"></i> Texto botón:</label>
+                            <input type="text" class="form-control" name="button_text" id="buttonTitle">
+                        </div>
+                        <div class="form-group col">
+                            <label for="url"><i class="fas fa-external-link-alt"></i> Enlace botón:</label>
+                            <input type="url" class="form-control" name="button_url" id="buttonUrl">
+                        </div>
                     </div>
                 </div>
+
+                <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#buttonCollapse" aria-expanded="false" aria-controls="buttonCollapse" onclick="buttonOnArticle(this)">
+                    Añadir botón
+                </button>
+
                 <button type="submit" class="btn btn-danger">Guardar</button>
             </form>
         </section>
@@ -76,22 +86,25 @@
             <table class="table table-sm table-hover table-light">
                 <thead class="thead-dark">
                     <tr>
-                        <th>#</th>
                         <th>Portada</th>
                         <th>Nombre</th>
-                        <th>Descripción</th>
+                        <th>Contenido</th>
+                        <th>¿Enlace?</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for article in articleList %}
                     <tr>
-                        <td>{{ article.id }}</td>
-                        <td>{{ article.image }}</td>
+                        <td><img src="{{ article.image }}" width="50"></td>
                         <td>{{ article.title }}</td>
-                        <td>{{ article.description }}</td>
+                        <td>{{ article.content[:65] ~ '...' }}</td>
+                        <td>{% if article.button_text %}<i class="fas fa-check-circle text-success"></i>{% else %}<i class="fas fa-times-circle text-warning"></i>{% endif %}</td>
                         <td>
                             <form method="post" action="#">
+                                <input type="hidden" name="ajax_url" value="{{website.url}}/ajax/administrator/news/delete">
+                                <input type="hidden" name="callback" value="refreshWindow">
+                                <input type="hidden" name="id" value="{{article.id}}">
                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
@@ -114,7 +127,16 @@
     <script src="{{ website.themeUrl }}/assets/js/jquery-3.4.1.slim.min.js"></script>
     <script src="{{ website.themeUrl }}/assets/js/popper.min.js"></script>
     <script src="{{ website.themeUrl }}/assets/js/bootstrap.min.js"></script>
+    <script src="{{ website.themeUrl }}/assets/summernote.min.js"></script>
     <script src="{{ website.themeUrl }}/assets/js/main.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#description').summernote({
+            tabsize: 2,
+            height: 200
+        });
+    });
+    </script>
 
 </body>
 </html>

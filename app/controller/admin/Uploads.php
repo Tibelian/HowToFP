@@ -76,6 +76,54 @@ class Uploads {
 
     }
 
+    public function listById(): void {
+
+        Response::ok();
+
+        $request = new Request();
+        if(!$request->issetPOST(['id'])) {
+            Response::showJson([
+                'status' => 'error',
+                'message' => 'Debes completar todos los campos obligatorios.'
+            ]);
+            return;
+        }
+        $data = $request->getPOST();
+
+        $dbFileList = DataBase::load('upload');
+        $file = [];
+        foreach($dbFileList as $dbFile) {
+
+            if ($dbFile['id'] == $data['id']) {
+
+                $tmpObj = new UploadedFile($dbFile['path']);
+                $tmpObj->setDescription($dbFile['description']);
+                $tmpObj->setPath($dbFile['path']);
+                $tmpObj->setId($dbFile['id']);
+                $file = [
+                    'id' => $tmpObj->getId(),
+                    'basename' => $tmpObj->getBasename(),
+                    'path' => $tmpObj->getPath(),
+                    'size' => $tmpObj->getSize(),
+                    'description' => $tmpObj->getDescription(),
+                    'realpath' => $tmpObj->getRealPath(),
+                    'extension' => $tmpObj->getExtension(),
+                    'createtime' => $tmpObj->getCTime(),
+                    'type' => $tmpObj->getType()
+                ];
+                break;
+
+            }
+
+        }
+
+        Response::showJson([
+            'status' => 'success',
+            'data' => $file
+        ]);
+
+    }
+
     public function add(): void {
 
         Response::ok();

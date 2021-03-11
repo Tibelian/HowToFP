@@ -13,10 +13,42 @@ use App\Model\WebSite;
 use App\Model\Session;
 use App\Model\Theme;
 use App\Model\DataBase;
+use App\Model\UploadedFile;
+use App\Model\GalleryFile;
 
 class Gallery {
     
     public function show(): void {
+
+        $dbFileList = DataBase::load('upload');
+        $fileList = [];
+        foreach($dbFileList as $dbFile) {
+            $tmpObj = new UploadedFile($dbFile['path']);
+            $tmpObj->setDescription($dbFile['description']);
+            $tmpObj->setPath($dbFile['path']);
+            $tmpObj->setId($dbFile['id']);
+            $fileList[] = $tmpObj;
+        }
+
+        $dbGalleryList = DataBase::load('gallery');
+        $gallery = [];
+        foreach($dbGalleryList as $dbGallery) {
+
+            $fileFound = null;
+            foreach($fileList as &$file) {
+                if($file->getId() == $dbGallery['file']) {
+                    $fileFound = $file;
+                    break;
+                }
+            }
+
+            $tmpObj = new GalleryFile();
+            $tmpObj->setDescription($dbGallery['description']);
+            $tmpObj->setTitle($dbGallery['title']);
+            $tmpObj->setId($dbGallery['id']);
+            $tmpObj->setFile($fileFound);
+            $gallery[] = $tmpObj;
+        }
 
         Response::ok();
         Theme::change("administrator", false);
@@ -26,7 +58,9 @@ class Gallery {
                 [
                     'website' => new WebSite(), 
                     'session' => new Session(),
-                    'currentPage' => 'gallery'
+                    'currentPage' => 'gallery',
+                    'fileList' => $fileList,
+                    'gallery' => $gallery
                 ]
             )
         );
@@ -60,7 +94,7 @@ class Gallery {
 
         Response::showJson([
             'status' => 'success',
-            'message' => 'El artículo se ha eliminado con éxito.'
+            'message' => 'La imagen se ha agregado con éxito en la galería.'
         ]);
 
     }
@@ -81,14 +115,14 @@ class Gallery {
 
         $allGallery = DataBase::load('gallery');
 
-        foreach($allGallery as &$image) {
-            if ($image['id'] == $data['id']) {
-                unset($image);
+        for ($i = 0; $i < sizeof($allGallery); $i++) {
+            if ($allGallery[$i]['id'] == $data['id']) {
+                array_splice($allGallery, $i, 1);
                 break;
             }
         }
 
-        DataBase::create('news', $allGallery);
+        DataBase::create('gallery', $allGallery);
 
         Response::showJson([
             'status' => 'success',

@@ -12,6 +12,7 @@ require __DIR__ . '/model/User.php';
 require __DIR__ . '/model/Session.php';
 require __DIR__ . '/model/Token.php';
 require __DIR__ . '/model/UploadedFile.php';
+require __DIR__ . '/model/GalleryFile.php';
 
 require __DIR__ . '/controller/http/Request.php';
 require __DIR__ . '/controller/http/Response.php';

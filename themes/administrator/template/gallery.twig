@@ -35,20 +35,25 @@
         <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
             <h2 class="border-bottom pb-2">Enlazar archivo subido con galería</h2>
             <form method="post" action="#">
-                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/gallery">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/gallery/link">
+                <input type="hidden" name="callback" value="refreshWindow">
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="file">Archivo subido <small>(formato imagen: png-jpeg)</small>:</label>
-                        <select class="form-control" name="file">
+                        <select class="form-control" name="file" id="file" required onchange="showGalleryDescription(this)">
                             <option></option>
                             {% for file in fileList %}
-                            <option value="{{ file.id }}">{{ file.title }}</option>
+                            <option value="{{ file.id }}">{{ file.basename }}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="form-group col">
+                        <label for="title">Título:</label>
+                        <input type="text" class="form-control" name="title" id="title" required>
+                    </div>
+                    <div class="form-group col">
                         <label for="description">Descripción:</label>
-                        <input type="text" class="form-control" readonly id="readonly">
+                        <input type="text" class="form-control" name="description" id="description" required>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-danger">Guardar</button>
@@ -57,10 +62,11 @@
 
         <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
             <h2 class="border-bottom pb-2">Imágenes en la galería</h2>
-            <table class="table table-sm table-hover table-light">
+            <table class="table table-sm table-hover table-light m-auto">
                 <thead class="thead-dark">
                     <tr>
                         <th>Imagen</th>
+                        <th>Título</th>
                         <th>Descripción</th>
                         <th>Eliminar</th>
                     </tr>
@@ -68,10 +74,14 @@
                 <tbody>
                     {% for image in gallery %}
                     <tr>
-                        <td>{{ image.url }}</td>
+                        <td><img src="{{website.url}}/{{ image.file.path }}" width="50px"></td>
+                        <td>{{ image.title }}</td>
                         <td>{{ image.description }}</td>
                         <td>
                             <form method="post" action="#">
+                                <input type="hidden" name="id" value="{{image.id}}">
+                                <input type="hidden" name="ajax_url" value="{{website.url}}/ajax/administrator/gallery/unlink">
+                                <input type="hidden" name="callback" value="refreshWindow">
                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
@@ -85,9 +95,46 @@
             </table>
         </section>
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+        <section class="mx-auto col-sm-10 bg-white shadow-sm my-4 p-3">
             <h2 class="border-bottom pb-2">Vista previa de la galería</h2>
-            
+
+            <div class="container">
+                <div id="carouselGallery" class="carousel slide carousel-fade col" data-ride="carousel" style="height: 400px;">
+                    <ol class="carousel-indicators">
+                        {% set imgCount = 0 %}
+                        {% for image in gallery %}
+
+                        <li data-target="#carouselGallery" data-slide-to="{{imgCount}}" {% if imgCount == 0 %}class="active"{% endif %}></li>
+
+                        {% set imgCount = imgCount + 1 %}
+                        {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                        {% set imgCount = 0 %}
+                        {% for image in gallery %}
+
+                        <div class="carousel-item {% if imgCount == 0 %}active{% endif %}">
+                            <div class="img-slider" style="background-image: url('{{website.url}}/{{image.file.path}}');"></div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ image.title }}</h5>
+                                <p>{{ image.description }}</p>
+                            </div>
+                        </div>
+
+                        {% set imgCount = imgCount + 1 %}
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselGallery" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselGallery" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
         </section>
 
 

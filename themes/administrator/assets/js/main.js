@@ -136,6 +136,11 @@ function redirectHome() {
         window.location.href = WEB_URL;
     }, 3000);
 }
+function refreshWindow() {
+    setTimeout(function() {
+        window.location.reload();
+    }, 1000);
+}
 function redirectAdmin() {
     showAlertRedirect();
     setTimeout(function() {
@@ -253,3 +258,88 @@ function refreshUploads() {
 	xhttp.send();
 
 }
+
+
+
+function showGalleryDescription(select) {
+
+    var description = document.getElementById("description");
+
+    if(select.value) {
+
+        var data = new FormData();
+            data.append("id", select.value);
+
+            
+        var xhttp = getAjaxObject();
+        xhttp.onreadystatechange = function() {
+
+            if(this.readyState == 4 && this.status == 200) {
+                try {
+
+                    var response = JSON.parse(this.responseText);
+                    if(response.status == 'error') {
+                        showAlert("alert-warning", response.message);
+                    } else {
+
+                        description.value = response.data.description;
+
+                    }
+
+                } catch(e) {
+                    showAlert("alert-danger", e);
+                }
+            }
+            
+        };
+        xhttp.open("post", WEB_URL + "/ajax/administrator/uploads/list", true);
+        xhttp.send(data);
+    
+
+    } else {
+
+        description.value = "";
+
+    }
+
+}
+
+
+
+
+function showImage(select) {
+
+    var imageContainer = document.getElementById("img-select");
+        imageContainer.innerHTML = "";
+
+    if (select.value) {
+
+        var image = document.createElement("img");
+        image.src = select.value
+        image.width = "50";
+
+        imageContainer.appendChild(image);
+
+    }
+
+}
+
+
+
+function buttonOnArticle(button) {
+    
+    var content = document.getElementById("buttonCollapse");
+    var buttonTitle = document.getElementById("buttonTitle");
+        buttonTitle.value = "";
+    var buttonUrl = document.getElementById("buttonUrl");
+        buttonUrl.value = "";
+
+
+    if (!content.classList.contains("show")) {
+        button.innerHTML = "Quitar botón";
+    } else {
+        button.innerHTML = "Añadir botón";
+    }
+
+}
+

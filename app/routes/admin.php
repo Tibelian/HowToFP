@@ -33,6 +33,7 @@ $router->post('/ajax/administrator/configuration', 'App\Controller\Admin\Configu
 
 // manage file uploads
 $router->get('/ajax/administrator/uploads/list', 'App\Controller\Admin\Uploads@list');
+$router->post('/ajax/administrator/uploads/list', 'App\Controller\Admin\Uploads@listById');
 $router->post('/ajax/administrator/uploads/add', 'App\Controller\Admin\Uploads@add');
 $router->post('/ajax/administrator/uploads/delete', 'App\Controller\Admin\Uploads@delete');
 
@@ -40,5 +41,9 @@ $router->post('/ajax/administrator/uploads/delete', 'App\Controller\Admin\Upload
 $router->post('/ajax/administrator/news/add', 'App\Controller\Admin\News@add');
 $router->post('/ajax/administrator/news/delete', 'App\Controller\Admin\News@delete');
 
-
+// modfiy mailing server
 $router->post('/ajax/administrator/contact', 'App\Controller\Admin\Contact@do');
+
+// manage gallery
+$router->post('/ajax/administrator/gallery/link', 'App\Controller\Admin\Gallery@link');
+$router->post('/ajax/administrator/gallery/unlink', 'App\Controller\Admin\Gallery@unLink');
