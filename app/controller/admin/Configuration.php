@@ -14,10 +14,21 @@ use App\Model\WebSite;
 use App\Model\Session;
 use App\Model\Theme;
 use App\Model\User;
+use App\Model\UploadedFile;
 
 class Configuration {
     
     public function show(): void {
+
+        $dbFileList = DataBase::load('upload');
+        $fileList = [];
+        foreach($dbFileList as $dbFile) {
+            $tmpObj = new UploadedFile($dbFile['path']);
+            $tmpObj->setDescription($dbFile['description']);
+            $tmpObj->setPath($dbFile['path']);
+            $tmpObj->setId($dbFile['id']);
+            $fileList[] = $tmpObj;
+        }
 
         Response::ok();
         Theme::change("administrator", false);
@@ -27,7 +38,8 @@ class Configuration {
                 [
                     'website' => new WebSite(), 
                     'session' => new Session(),
-                    'currentPage' => 'configuration'
+                    'currentPage' => 'configuration',
+                    'fileList' => $fileList
                 ]
             )
         );
