@@ -48,8 +48,17 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="favicon"><i class="fas fa-image"></i> Favicon:</label>
-                        <input type="text" readonly class="form-control" name="favicon" id="favicon" value="{{ website.favicon }}">
+                        <label for="favicon"><i class="fas fa-image"></i> Favicon <small>(archivos subidos)</small>: <span id="img-select">
+                            {% if website.favicon is not empty %}
+                                <img src="{{website.favicon}}" width="50px">
+                            {% endif %}
+                        </span></label>
+                        <select class="form-control" name="favicon" id="favicon" title="Seleccionar una imagen" onchange="showImage(this)">
+                            <option></option>
+                            {% for file in fileList %}
+                            <option value="{{ website.url ~ '/' ~ file.path }}" {% if website.url ~ '/' ~ file.path == website.favicon %} selected {% endif %} >{{ file.basename }} - {{ file.description }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="form-group col">
                         <label for="cdn"><i class="fas fa-globe"></i> CDN(Proxy):</label>
