@@ -35,11 +35,12 @@
         <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
             <h2 class="border-bottom pb-2">Agregar enlace de navegación</h2>
             <form method="post" action="">
-                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/upload">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/nav/add">
+                <input type="hidden" name="callback" value="refreshWindow">
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="name"><i class="fas fa-align-justify"></i> Nombre:</label>
-                        <input type="text" class="form-control" name="name" id="name" required>
+                        <label for="name"><i class="fas fa-align-justify"></i> Nombre: <small>(se permite HTML + <a href="https://fontawesome.com/icons?d=gallery&m=free" target="_blank">iconos <i class="fas fa-external-link-alt"></i></a>)</small></label>
+                        <input type="text" class="form-control" name="title" id="name" required>
                     </div>
                     <div class="form-group col">
                         <label for="url"><i class="fas fa-link"></i> Enlace :</label>
@@ -55,7 +56,6 @@
             <table class="table table-hover table-light">
                 <thead class="thead-dark">
                     <tr>
-                        <th>#</th>
                         <th>Nombre</th>
                         <th>Enlace</th>
                         <th>Eliminar</th>
@@ -64,11 +64,13 @@
                 <tbody>
                     {% for link in linkList %}
                     <tr>
-                        <td>{{ link.id }}</td>
-                        <td>{{ link.name }}</td>
+                        <td>{{ link.title | raw }}</td>
                         <td>{{ link.url }}</td>
                         <td>
                             <form method="post" action="#">
+                                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/nav/delete">
+                                <input type="hidden" name="callback" value="refreshWindow">
+                                <input type="hidden" name="id" value="{{ link.id }}">
                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
