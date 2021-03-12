@@ -27,7 +27,8 @@ class Contact {
                     'website' => new WebSite(), 
                     'session' => new Session(),
                     'currentPage' => 'contact',
-                    'mail' => DataBase::load('website/mailer')
+                    'mail' => DataBase::load('website/mailer'),
+                    'messages' => DataBase::load('messages')
                 ]
             )
         );
