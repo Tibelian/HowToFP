@@ -41,6 +41,10 @@
                         <label for="name">Nombre:</label>
                         <input type="text" class="form-control" name="name" id="name" required value="{{ mail.name }}">
                     </div>
+                    <div class="form-group col">
+                        <label for="host">Host:</label>
+                        <input type="text" class="form-control" name="host" id="host" required value="{{ mail.host }}">
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
@@ -54,15 +58,9 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="host">Host:</label>
-                        <input type="text" class="form-control" name="host" id="host" required value="{{ mail.host }}">
-                    </div>
-                    <div class="form-group col">
                         <label for="port">Puerto:</label>
                         <input type="number" class="form-control" name="port" id="port" required value="{{ mail.port }}">
                     </div>
-                </div>
-                <div class="form-row">
                     <div class="form-group col">
                         <label for="smtp">SMTP:</label>
                         <select class="form-control" name="smtp" required>
@@ -80,6 +78,36 @@
                 </div>
                 <button type="submit" class="btn btn-danger">Guardar</button>
             </form>
+        </section>
+
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
+            <h2 class="border-bottom pb-2">Copias de mensajes enviados</h2>
+            <table class="table table-sm table-hover table-light">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Asunto</th>
+                        <th>Contenido</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for message in messages %}
+                    <tr>
+                        <td>{{ message.name }}</td>
+                        <td>{{ message.email }}</td>
+                        <td>{{ message.subject }}</td>
+                        <td>{{ message.content }}</td>
+                        <td>{{ message.date }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">No se han enviado mensajes desde el formulario de contacto</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </section>
 
         <!-- footer -->

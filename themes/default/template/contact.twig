@@ -58,29 +58,31 @@
                 
                     <div class="col-sm-5 mb-4 mb-sm-0">
                         <h3>Formulario de contacto:</h3>
-                        <p class="mb-4 small">ASDF</p>
-                        <form method="post" action="#">
+                        <p class="text-danger">* Campos obligatorios</p>
+                        <form method="post" action="#" id="contact-form">
+                            <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/contact">
+                            <input type="hidden" name="callback" value="clearContactForm">
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="contactoNombre">Nombre:</label>
-                                    <input type="text" class="form-control" id="contactoNombre">
+                                    <label for="contactoNombre">Nombre<span class="text-danger">*</span>:</label>
+                                    <input type="text" class="form-control" name="name" id="contactoNombre" required>
                                 </div>
                                 <div class="form-group col">
-                                    <label for="contactoAsunto">Asunto:</label>
-                                    <input type="text" class="form-control" id="contactoAsunto">
+                                    <label for="contactoAsunto">Asunto<span class="text-danger">*</span>:</label>
+                                    <input type="text" class="form-control" name="subject" id="contactoAsunto" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="contactoEmail">Correo electrónico:</label>
-                                <input type="email" class="form-control" id="contactoEmail">
+                                <input type="email" class="form-control" name="email" id="contactoEmail">
                             </div>
                             <div class="form-group">
-                                <label for="contactoMensaje">Mensaje:</label>
-                                <textarea class="form-control" id="contactoMensaje" rows="4"></textarea>
+                                <label for="contactoMensaje">Mensaje<span class="text-danger">*</span>:</label>
+                                <textarea class="form-control" id="contactoMensaje" name="content" rows="4" required></textarea>
                             </div>
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="contactoTerminos" required>
-                                <label class="form-check-label" for="contactoTerminos">He leído y acepto la política de privacidad</label>
+                                <label class="form-check-label" for="contactoTerminos">He leído y acepto la política de privacidad<span class="text-danger">*</span></label>
                             </div>
                             <button type="submit" class="btn btn-danger w-100">Enviar</button>
                         </form>

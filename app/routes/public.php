@@ -19,6 +19,7 @@ $router->get('/about-us', 'App\Controller\AboutUs@show');
  * CONTACT *
  ***********/
 $router->get('/contact', 'App\Controller\Contact@show');
+$router->post('/ajax/contact', 'App\Controller\Contact@do');
 
 /********
  * NEWS *
