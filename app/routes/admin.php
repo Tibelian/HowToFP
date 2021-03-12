@@ -25,25 +25,36 @@ $router->mount('/administrator', function() use($router) {
     
 });
 
-// logout
-$router->post('/ajax/administrator/logout', 'App\Controller\Admin\Login@close');
 
-// save web config
-$router->post('/ajax/administrator/configuration', 'App\Controller\Admin\Configuration@do');
+$router->mount('/ajax/administrator', function() use($router) {
 
-// manage file uploads
-$router->get('/ajax/administrator/uploads/list', 'App\Controller\Admin\Uploads@list');
-$router->post('/ajax/administrator/uploads/list', 'App\Controller\Admin\Uploads@listById');
-$router->post('/ajax/administrator/uploads/add', 'App\Controller\Admin\Uploads@add');
-$router->post('/ajax/administrator/uploads/delete', 'App\Controller\Admin\Uploads@delete');
+    // logout
+    $router->post('/logout', 'App\Controller\Admin\Login@close');
+    
+    // save web config
+    $router->post('/configuration', 'App\Controller\Admin\Configuration@do');
+    
+    // manage file uploads
+    $router->get('/uploads/list', 'App\Controller\Admin\Uploads@list');
+    $router->post('/uploads/list', 'App\Controller\Admin\Uploads@listById');
+    $router->post('/uploads/add', 'App\Controller\Admin\Uploads@add');
+    $router->post('/uploads/delete', 'App\Controller\Admin\Uploads@delete');
+    
+    // manage articles
+    $router->post('/news/add', 'App\Controller\Admin\News@add');
+    $router->post('/news/delete', 'App\Controller\Admin\News@delete');
+    
+    // modfiy mailing server
+    $router->post('/contact', 'App\Controller\Admin\Contact@do');
+    
+    // manage gallery
+    $router->post('/gallery/link', 'App\Controller\Admin\Gallery@link');
+    $router->post('/gallery/unlink', 'App\Controller\Admin\Gallery@unLink');
+    
+    // manage links
+    $router->post('/nav/add', 'App\Controller\Admin\Navigation@add');
+    $router->post('/nav/delete', 'App\Controller\Admin\Navigation@delete');
 
-// manage articles
-$router->post('/ajax/administrator/news/add', 'App\Controller\Admin\News@add');
-$router->post('/ajax/administrator/news/delete', 'App\Controller\Admin\News@delete');
+});
 
-// modfiy mailing server
-$router->post('/ajax/administrator/contact', 'App\Controller\Admin\Contact@do');
 
-// manage gallery
-$router->post('/ajax/administrator/gallery/link', 'App\Controller\Admin\Gallery@link');
-$router->post('/ajax/administrator/gallery/unlink', 'App\Controller\Admin\Gallery@unLink');

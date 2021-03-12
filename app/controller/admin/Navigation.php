@@ -26,7 +26,8 @@ class Navigation {
                 [
                     'website' => new WebSite(), 
                     'session' => new Session(),
-                    'currentPage' => 'navigation'
+                    'currentPage' => 'navigation',
+                    'linkList' => DataBase::load("links")
                 ]
             )
         );
@@ -64,7 +65,7 @@ class Navigation {
 
     }
 
-    public function unLink(): void {
+    public function delete(): void {
 
         Response::ok();
 
@@ -79,10 +80,10 @@ class Navigation {
         $data = $request->getPOST();
 
         $allLinks = DataBase::load('links');
-
-        foreach($allLinks as &$link) {
-            if ($link['id'] == $data['id']) {
-                unset($link);
+        
+        for ($i = 0; $i < sizeof($allLinks); $i++) {
+            if ($allLinks[$i]['id'] == $data['id']) {
+                array_splice($allLinks, $i, 1);
                 break;
             }
         }
