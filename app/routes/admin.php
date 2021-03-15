@@ -22,6 +22,11 @@ $router->mount('/administrator', function() use($router) {
 
     // contact
     $router->get('/contact', "App\Controller\Admin\Contact@show");
+
+    // edit pages
+    $router->get('/pages/home', "App\Controller\Admin\Pages@showHome");
+    $router->get('/pages/about-us', "App\Controller\Admin\Pages@showAboutUs");
+    $router->get('/pages/contact', "App\Controller\Admin\Pages@showContact");
     
 });
 
