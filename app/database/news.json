@@ -1,16 +1,26 @@
 [
     {
         "id": "604a5c0f6d9c9",
-        "title": "HowToFP",
-        "image": "http:\/\/localhost\/dev\/HowToFP\/uploads\/11-03-2021\/home-ranking-bg2.jpg",
-        "content": "<p>asdfasdfas<\/p>",
-        "button_text": "asdfasdf",
-        "button_url": "https:\/\/github.com\/Tibelian\/HowToFP\/projects\/1?fullscreen=true"
+        "title": "Vídeos",
+        "image": "http:\/\/localhost\/dev\/HowToFP\/uploads\/15-03-2021\/schoolarmy.jpeg",
+        "content": "El entretenimiento más original de todo YouTube",
+        "button_text": "Ver canal",
+        "button_url": "https://www.youtube.com/c/SchoolArmy"
     },
     {
-        "id": "604a5cdbb8627",
-        "title": "eRubin",
-        "image": "http:\/\/localhost\/dev\/HowToFP\/uploads\/11-03-2021\/hopzone.png",
-        "content": "<p><font color=\"#000000\" style=\"background-color: rgb(255, 255, 0);\">fsadfsadfsadfasfsadfasdfsadf<\/font><\/p>"
+        "id": "604a5c0sdfasd9",
+        "title": "Streaming",
+        "image": "http:\/\/localhost\/dev\/HowToFP\/uploads\/15-03-2021\/schoolarmy.jpeg",
+        "content": "Participa en tiempo real con nosotros",
+        "button_text": "Ver stream",
+        "button_url": "https://www.twitch.tv/schoolarmy8"
+    },
+    {
+        "id": "604a5234239c9",
+        "title": "Nuestro blog",
+        "image": "http:\/\/localhost\/dev\/HowToFP\/uploads\/15-03-2021\/schoolarmy.jpeg",
+        "content": "Todas las noticias a un click",
+        "button_text": "Leer más",
+        "button_url": "http://howtofp.com/"
     }
 ]
