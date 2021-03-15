@@ -31,55 +31,41 @@
 
     <!-- main content -->
     <div class="container-fluid">
-        <div class="row bg-white py-5 bg-image shadow-sm" style="background-image: url('assets/img/bg-light.png')">
+        <div class="row bg-white py-5 bg-image shadow-sm" style="background-image: url('http://localhost/dev/HowToFP/uploads/15-03-2021/bg-light.png')">
             <div class="container animate__animated animate__fadeInLeft">
                 <div class="d-block text-center mb-4">
                     <h1 class="text-uppercase">Últimas novedades</h1>
                     <h4 class="badge badge-danger">NO TE PIERDAS NI UN SOLO VÍDEO NUESTRO</h4>
                 </div>
                 <div class="row justify-content-center pb-5 owl-carousel mx-auto">
+
+                    {% for article in articleList %}
                     <div class="d-flex justify-content-center py-4">
                         <div class="card bg-light shadow-sm" style="width: 18rem; height:350px;">
                             <div class="d-flex justify-content-center">
-                                <img class="card-img-top mt-3" src="assets/img/schoolarmy.jpeg" alt="texto alternativo" style="width: 50%;" />
+                                <img class="card-img-top mt-3" src="{{ article.image }}" alt="texto alternativo" style="width: 50%;" />
                             </div>
                             <div class="card-body text-center">
-                                <h5 class="card-title">Vídeos</h5>
-                                <p class="card-text">El entretenimiento más original de todo YouTube</p>
+                                <h5 class="card-title">{{ article.title }}</h5>
+                                <p class="card-text">{{ article.content }}</p>
                             </div>
+                            {% if article.button_text %}
                             <div class="card-body d-flex justify-content-center align-items-center">
-                                <a href="https://www.youtube.com/c/SchoolArmy" class="btn btn-danger" target="_blank">Ver canal</a>
+                                <a href="{{ article.button_url }}" class="btn btn-danger" target="_blank">{{ article.button_text }}</a>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
+                    {% else %}
                     <div class="d-flex justify-content-center py-4">
-                        <div class="card bg-light shadow-sm" style="width: 18rem; height:350px;">
-                            <div class="d-flex justify-content-center">
-                                <img class="card-img-top mt-3" src="assets/img/schoolarmy.jpeg" alt="texto alternativo" style="width: 50%;" />
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Streaming</h5>
-                                <p class="card-text">Participa en tiempo real con nosotros</p>
-                            </div>
-                            <div class="card-body d-flex justify-content-center align-items-center">
-                                <a href="https://www.twitch.tv/schoolarmy8" class="btn btn-danger" target="_blank">Ver stream</a>
-                            </div>
+                        <div class="card bg-light shadow-sm d-flex justify-content-center align-items-center" style="width: 18rem; height:350px;">
+                            <strong>
+                                NO SE HAN ENCONTRADO ARTÍCULOS
+                            </strong>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center py-4">
-                        <div class="card bg-light shadow-sm" style="width: 18rem; height:350px;">
-                            <div class="d-flex justify-content-center">
-                                <img class="card-img-top mt-3" src="assets/img/schoolarmy.jpeg" alt="texto alternativo" style="width: 50%;" />
-                            </div>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Nuestro Blog</h5>
-                                <p class="card-text">Todas las noticias a un click</p>
-                            </div>
-                            <div class="card-body d-flex justify-content-center align-items-center">
-                                <a href="http://howtofp.com/" class="btn btn-danger" target="_blank">Leer más</a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </div>
@@ -146,40 +132,36 @@
                     </ul>
                     <div id="carouselGallery" class="carousel slide carousel-fade col" data-ride="carousel" style="height: 400px;">
                         <ol class="carousel-indicators">
-                          <li data-target="#carouselGallery" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselGallery" data-slide-to="1"></li>
-                          <li data-target="#carouselGallery" data-slide-to="2"></li>
+                            {% set imgCount = 0 %}
+                            {% for image in gallery %}
+
+                            <li data-target="#carouselGallery" data-slide-to="{{imgCount}}" {% if imgCount == 0 %}class="active"{% endif %}></li>
+
+                            {% set imgCount = imgCount + 1 %}
+                            {% endfor %}
                         </ol>
                         <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <div class="img-slider" style="background-image: url('assets/img/gallery/3s9d932.jpg');"></div>
-                            <div class="carousel-caption d-none d-md-block">
-                              <h5>First slide label</h5>
-                              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, nam.</p>
+                            {% set imgCount = 0 %}
+                            {% for image in gallery %}
+
+                            <div class="carousel-item {% if imgCount == 0 %}active{% endif %}">
+                                <div class="img-slider" style="background-image: url('{{website.url}}/{{image.file.path}}');"></div>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ image.title }}</h5>
+                                    <p>{{ image.description }}</p>
+                                </div>
                             </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="img-slider" style="background-image: url('assets/img/gallery/3289s3sf.jpg');"></div>
-                            <div class="carousel-caption d-none d-md-block">
-                              <h5>Second slide label</h5>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="img-slider" style="background-image: url('assets/img/gallery/78fd8us.jpg');"></div>
-                            <div class="carousel-caption d-none d-md-block">
-                              <h5>Third slide label</h5>
-                              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                            </div>
-                          </div>
+
+                            {% set imgCount = imgCount + 1 %}
+                            {% endfor %}
                         </div>
                         <a class="carousel-control-prev" href="#carouselGallery" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
                         </a>
                         <a class="carousel-control-next" href="#carouselGallery" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
                         </a>
                     </div>
                 </div>
