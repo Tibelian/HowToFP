@@ -33,4 +33,5 @@ require __DIR__ . '/controller/admin/Configuration.php';
 require __DIR__ . '/controller/admin/Uploads.php';
 require __DIR__ . '/controller/admin/Navigation.php';
 require __DIR__ . '/controller/admin/Contact.php';
+require __DIR__ . '/controller/admin/Pages.php';
 

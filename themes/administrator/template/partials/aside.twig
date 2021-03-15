@@ -8,15 +8,23 @@
 
     <nav class="mt-4">
         <ul>
-            <li class="mb-2"><a href="{{ website.url }}/administrator" {% if currentPage == 'summary' %}class="active"{% endif %}><i class="fas fa-chart-pie shadow-sm"></i> Resumen</a></li>
+            <li class="mb-3"><a href="{{ website.url }}/administrator" {% if currentPage == 'summary' %}class="active"{% endif %}><i class="fas fa-chart-pie shadow-sm"></i> Resumen</a></li>
             
+            <li class="ml-3 text-secondary">Ajustes web</li>
             <li><a href="{{ website.url }}/administrator/configuration" {% if currentPage == 'configuration' %}class="active"{% endif %}><i class="fas fa-cog shadow-sm"></i> Configuración</a></li>
-            <li class="mb-2"><a href="{{ website.url }}/administrator/uploads" {% if currentPage == 'uploads' %}class="active"{% endif %}><i class="fas fa-file-upload shadow-sm"></i> Subidas</a></li>
+            <li class="mb-3"><a href="{{ website.url }}/administrator/uploads" {% if currentPage == 'uploads' %}class="active"{% endif %}><i class="fas fa-file-upload shadow-sm"></i> Subidas</a></li>
 
+            <li class="ml-3 text-secondary">Módulos</li>
             <li><a href="{{ website.url }}/administrator/news" {% if currentPage == 'news' %}class="active"{% endif %}><i class="fas fa-file shadow-sm"></i> Noticias</a></li>
             <li><a href="{{ website.url }}/administrator/gallery" {% if currentPage == 'gallery' %}class="active"{% endif %}><i class="fas fa-image shadow-sm"></i> Galería</a></li>
-            <li><a href="{{ website.url }}/administrator/contact" {% if currentPage == 'contact' %}class="active"{% endif %}><i class="fas fa-phone shadow-sm"></i> Contacto</a></li>
-            <li><a href="{{ website.url }}/administrator/navigation" {% if currentPage == 'navigation' %}class="active"{% endif %}><i class="fas fa-heart shadow-sm"></i> Redes sociales</a></li>
+            <li><a href="{{ website.url }}/administrator/contact" {% if currentPage == 'contact' %}class="active"{% endif %}><i class="fas fa-phone shadow-sm"></i> Mensajería</a></li>
+            <li class="mb-3"><a href="{{ website.url }}/administrator/navigation" {% if currentPage == 'navigation' %}class="active"{% endif %}><i class="fas fa-heart shadow-sm"></i> Redes sociales</a></li>
+
+            <li class="ml-3 text-secondary">Páginas</li>
+            <li><a href="{{ website.url }}/administrator/pages/home" {% if currentPage == 'pages/home' %}class="active"{% endif %}><i class="fas fa-home shadow-sm"></i> Inicio</a></li>
+            <li><a href="{{ website.url }}/administrator/pages/about-us" {% if currentPage == 'pages/about-us' %}class="active"{% endif %}><i class="fas fa-user-secret shadow-sm"></i> Quiénes somos</a></li>
+            <li><a href="{{ website.url }}/administrator/pages/contact" {% if currentPage == 'pages/contact' %}class="active"{% endif %}><i class="fas fa-phone shadow-sm"></i> Contacto</a></li>
+
         </ul>
     </nav>
 
