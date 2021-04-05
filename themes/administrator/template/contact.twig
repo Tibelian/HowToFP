@@ -32,8 +32,8 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Servidor de mensajería</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Servidor de mensajería</h2>
             <form method="post" action="#">
                 <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/contact">
                 <div class="form-row">
@@ -80,34 +80,36 @@
             </form>
         </section>
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Copias de mensajes enviados</h2>
-            <table class="table table-sm table-hover table-light">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Asunto</th>
-                        <th>Contenido</th>
-                        <th>Fecha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for message in messages %}
-                    <tr>
-                        <td>{{ message.name }}</td>
-                        <td>{{ message.email }}</td>
-                        <td>{{ message.subject }}</td>
-                        <td>{{ message.content }}</td>
-                        <td>{{ message.date }}</td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="5">No se han enviado mensajes desde el formulario de contacto</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Copias de mensajes enviados</h2>
+            <div class="table-responsive px-3 pt-2">
+                <table class="table table-sm table-hover table-light">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Asunto</th>
+                            <th>Contenido</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for message in messages %}
+                        <tr>
+                            <td>{{ message.name }}</td>
+                            <td>{{ message.email }}</td>
+                            <td>{{ message.subject }}</td>
+                            <td>{{ message.content }}</td>
+                            <td>{{ message.date }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5">No se han enviado mensajes desde el formulario de contacto</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <!-- footer -->

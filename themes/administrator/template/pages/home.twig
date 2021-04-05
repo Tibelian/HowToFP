@@ -32,26 +32,80 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">ASDF</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Información página</h2>
             <form method="post" action="#">
-                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/contact">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/pages/home/info">
                 <div class="form-row">
                     <div class="form-group col">
-                        <label for="name">asdfasd:</label>
-                        <input type="text" class="form-control" name="name" id="name" required value="{{ mail.name }}">
+                        <label for="title">Título:</label>
+                        <input type="text" class="form-control form-control-sm" name="title" id="title" required value="{{ page.title }}">
                     </div>
                     <div class="form-group col">
-                        <label for="host">Hsofdsafdsafdsafsgt:</label>
-                        <input type="text" class="form-control" name="host" id="host" required value="{{ mail.host }}">
+                        <label for="seo">Descripción SEO:</label>
+                        <textarea class="form-control form-control-sm" name="seo" id="seo" required>{{ page.seo }}</textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-danger">Guardar</button>
             </form>
         </section>
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">hgsfddsfasd</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Introducción</h2>
+            <form method="post" action="#">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/pages/home/intro">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="title">Título:</label>
+                        <input type="text" class="form-control form-control-sm" name="title" id="title" required value="{{ page.intro.title }}">
+                    </div>
+                    <div class="form-group col">
+                        <label for="subtitle">Subtítulo:</label>
+                        <input type="text" class="form-control form-control-sm" name="subtitle" id="subtitle" required value="{{ page.intro.subtitle }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="image">Imagen de fondo:</label>
+                        <input type="text" class="form-control form-control-sm" name="image" id="image" required value="{{ page.intro.image }}">
+                    </div>
+                    <div class="form-group col">
+                        ....IMAGEN....
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="module">Módulo: <a href="{{ website.url }}/administrator/news" target="_blank"><i class="fas fa-external-link-alt"></i></a></label>
+                    <input type="text" readonly class="form-control form-control-sm" id="module" required value="Noticias">
+                </div>
+                <button type="submit" class="btn btn-danger">Guardar</button>
+            </form>
+        </section>
+
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Iconos descriptivos</h2>
+            <form method="post" action="#">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/pages/home/icons">
+
+                <button type="submit" class="btn btn-danger">Guardar</button>
+            </form>
+        </section>
+
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Galería</h2>
+            <form method="post" action="#">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/pages/home/icons">
+
+                <button type="submit" class="btn btn-danger">Guardar</button>
+            </form>
+        </section>
+
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 mb-4">
+            <h2>Pasos para unirse al equipo</h2>
+            <form method="post" action="#">
+                <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/pages/home/icons">
+
+                <button type="submit" class="btn btn-danger">Guardar</button>
+            </form>
         </section>
 
         <!-- footer -->

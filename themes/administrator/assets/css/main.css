@@ -28,6 +28,27 @@ main footer {
 
 
 
+section {
+    position: relative;
+    padding: 0!important;
+    border: 1px solid rgba(0,0,0,.1);
+}
+section form {
+    margin: 15px;
+}
+section h2 {
+    /*
+    background: linear-gradient(rgba(52,58,64,.7),rgba(52,58,64,1));
+*/
+    background-color: var(--secondary);    
+    color: #eee;
+    position: relative;
+    padding: 10px;
+    font-size: 24px;
+}
+
+
+
 /*
 barra lateral
 menú principal

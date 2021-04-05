@@ -32,8 +32,8 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Enlazar archivo subido con galería</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Enlazar archivo subido con galería</h2>
             <form method="post" action="#">
                 <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/gallery/link">
                 <input type="hidden" name="callback" value="refreshWindow">
@@ -60,45 +60,47 @@
             </form>
         </section>
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Imágenes en la galería</h2>
-            <table class="table table-sm table-hover table-light m-auto">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Imagen</th>
-                        <th>Título</th>
-                        <th>Descripción</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for image in gallery %}
-                    <tr>
-                        <td><img src="{{website.url}}/{{ image.file.path }}" width="50px"></td>
-                        <td>{{ image.title }}</td>
-                        <td>{{ image.description }}</td>
-                        <td>
-                            <form method="post" action="#">
-                                <input type="hidden" name="id" value="{{image.id}}">
-                                <input type="hidden" name="ajax_url" value="{{website.url}}/ajax/administrator/gallery/unlink">
-                                <input type="hidden" name="callback" value="refreshWindow">
-                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="3">No se han encontrado imágenes</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Imágenes en la galería</h2>
+            <div class="table-responsive px-3 pt-2">
+                <table class="table table-sm table-hover table-light m-auto">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Título</th>
+                            <th>Descripción</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for image in gallery %}
+                        <tr>
+                            <td><img src="{{website.url}}/{{ image.file.path }}" width="50px"></td>
+                            <td>{{ image.title }}</td>
+                            <td>{{ image.description }}</td>
+                            <td>
+                                <form method="post" action="#">
+                                    <input type="hidden" name="id" value="{{image.id}}">
+                                    <input type="hidden" name="ajax_url" value="{{website.url}}/ajax/administrator/gallery/unlink">
+                                    <input type="hidden" name="callback" value="refreshWindow">
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="3">No se han encontrado imágenes</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </section>
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm my-4 p-3">
-            <h2 class="border-bottom pb-2">Vista previa de la galería</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm my-4">
+            <h2>Vista previa de la galería</h2>
 
-            <div class="container">
+            <div class="container py-3">
                 <div id="carouselGallery" class="carousel slide carousel-fade col" data-ride="carousel" style="height: 400px;">
                     <ol class="carousel-indicators">
                         {% set imgCount = 0 %}
