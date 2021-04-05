@@ -32,8 +32,8 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Agregar enlace de navegación</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Agregar enlace de navegación</h2>
             <form method="post" action="">
                 <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/nav/add">
                 <input type="hidden" name="callback" value="refreshWindow">
@@ -51,10 +51,11 @@
             </form>
         </section>
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Lista de enlaces</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Lista de enlaces</h2>
+            <div class="table-responsive px-3 pt-2">
             <table class="table table-hover table-light">
-                <thead class="thead-dark">
+                <thead class="thead-light">
                     <tr>
                         <th>Nombre</th>
                         <th>Enlace</th>
@@ -82,6 +83,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            </div>
         </section>
 
         <!-- footer -->

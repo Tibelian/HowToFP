@@ -13,7 +13,6 @@ use App\Model\DataBase;
 use App\Model\WebSite;
 use App\Model\Session;
 use App\Model\Theme;
-use App\Model\User;
 use App\Model\UploadedFile;
 
 class Configuration {

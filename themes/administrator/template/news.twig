@@ -33,8 +33,8 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Agregar nueva noticia</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Agregar nueva noticia</h2>
             <form method="post" action="#">
                 <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/news/add">
                 <input type="hidden" name="callback" value="refreshWindow">
@@ -81,41 +81,43 @@
             </form>
         </section>
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Listado noticias</h2>
-            <table class="table table-sm table-hover table-light">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Portada</th>
-                        <th>Nombre</th>
-                        <th>Contenido</th>
-                        <th>¿Enlace?</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for article in articleList %}
-                    <tr>
-                        <td><img src="{{ article.image }}" width="50"></td>
-                        <td>{{ article.title }}</td>
-                        <td>{{ article.content[:65] ~ '...' }}</td>
-                        <td>{% if article.button_text %}<i class="fas fa-check-circle text-success"></i>{% else %}<i class="fas fa-times-circle text-warning"></i>{% endif %}</td>
-                        <td>
-                            <form method="post" action="#">
-                                <input type="hidden" name="ajax_url" value="{{website.url}}/ajax/administrator/news/delete">
-                                <input type="hidden" name="callback" value="refreshWindow">
-                                <input type="hidden" name="id" value="{{article.id}}">
-                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="5">No se han encontrado noticias</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Listado noticias</h2>
+            <div class="table-responsive px-3 pt-2">
+                <table class="table table-sm table-hover table-light">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Portada</th>
+                            <th>Nombre</th>
+                            <th>Contenido</th>
+                            <th>¿Enlace?</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for article in articleList %}
+                        <tr>
+                            <td><img src="{{ article.image }}" width="50"></td>
+                            <td>{{ article.title }}</td>
+                            <td>{{ article.content[:65] ~ '...' }}</td>
+                            <td>{% if article.button_text %}<i class="fas fa-check-circle text-success"></i>{% else %}<i class="fas fa-times-circle text-warning"></i>{% endif %}</td>
+                            <td>
+                                <form method="post" action="#">
+                                    <input type="hidden" name="ajax_url" value="{{website.url}}/ajax/administrator/news/delete">
+                                    <input type="hidden" name="callback" value="refreshWindow">
+                                    <input type="hidden" name="id" value="{{article.id}}">
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5">No se han encontrado noticias</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <!-- footer -->

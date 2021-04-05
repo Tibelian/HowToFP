@@ -32,8 +32,8 @@
         <!-- header -->
         {% include 'partials/header.twig' %}
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Subir archivo al servidor</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Subir archivo al servidor</h2>
             <form method="post" action="#" enctype="multipart/form-data" id="file-add-form">
                 <input type="hidden" name="ajax_url" value="{{ website.url }}/ajax/administrator/uploads/add">
                 <input type="hidden" name="callback" value="refreshUploadsAndClear">
@@ -51,8 +51,8 @@
             </form>
         </section>
 
-        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4 p-3">
-            <h2 class="border-bottom pb-2">Archivos subidos al servidor</h2>
+        <section class="mx-auto col-sm-10 bg-white shadow-sm mt-4">
+            <h2>Archivos subidos al servidor</h2>
             <div class="row mx-2" id="file-list">
                 {% for file in fileList %}
 
