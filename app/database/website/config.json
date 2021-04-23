@@ -1,7 +1,7 @@
 {
     "title": "HowToFP aka SchoolArmy",
-    "url": "http:\/\/localhost\/dev\/HowToFP",
-    "favicon": "http:\/\/localhost\/dev\/HowToFP\/uploads\/11-03-2021\/favicon.png",
+    "url": "http:\/\/tibelian.test\/HowToFP",
+    "favicon": "http:\/\/tibelian.test\/HowToFP\/uploads\/11-03-2021\/favicon.png",
     "theme": "default",
     "cdn": "REMOTE_ADDR",
     "admin_email": "howtofp@gmail.com"
