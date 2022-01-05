@@ -1,7 +1,7 @@
 {
     "name": "Prueba HowToFP",
     "host": "smtp.gmail.com",
-    "user": "lordiulian@gmail.com",
+    "user": "",
     "password": "",
     "port": "465",
     "smtp": "true",
